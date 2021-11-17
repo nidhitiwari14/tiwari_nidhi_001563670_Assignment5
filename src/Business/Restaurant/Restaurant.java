@@ -5,7 +5,10 @@
  */
 package Business.Restaurant;
 
+import RestaurantOrder.RestaurantOrder;
+import RetaurantMenu.RestaurantMenu;
 import RetaurantMenu.RestaurantMenuDirectory;
+import java.util.ArrayList;
 
 /**
  *
@@ -17,9 +20,15 @@ public class Restaurant {
     private String restaurantContact;
     private String restaurantManager;
     private RestaurantMenuDirectory restaurantMenuDirectory; 
+    private ArrayList<RestaurantMenu> Menu;
+    private ArrayList<RestaurantOrder> orderList;
+    private String adminUserName;
     
-    public Restaurant(){     
-    };
+    public Restaurant(String UserName) {
+        this.adminUserName=UserName;
+        Menu=new ArrayList<RestaurantMenu>();
+        orderList=new ArrayList<RestaurantOrder>();
+    }
 
     public String getRestaurantName() {
         return restaurantName;
@@ -31,6 +40,22 @@ public class Restaurant {
 
     public String getRestaurantAddress() {
         return restaurantAddress;
+    }
+    
+    public String getAdminUserName() {
+        return adminUserName;
+    }
+
+    public void setAdminUserName(String adminUName) {
+        this.adminUserName = adminUName;
+    }
+    
+    public ArrayList<RestaurantOrder> getOrderList() {
+        return orderList;
+    }
+
+    public void setOrderList(ArrayList<RestaurantOrder> orderList) {
+        this.orderList = orderList;
     }
 
     public void setRestaurantAddress(String restaurantAddress) {
@@ -59,6 +84,16 @@ public class Restaurant {
 
     public void setRestaurantMenuDirectory(RestaurantMenuDirectory restaurantMenuDirectory) {
         this.restaurantMenuDirectory = restaurantMenuDirectory;
+    }
+    
+    public void addDishes(RestaurantMenu menu){
+        
+        Menu.add(menu);
+    }
+    
+    public void removeDishes(RestaurantMenu menu){
+        
+        Menu.remove(menu);
     }
     
     @Override
