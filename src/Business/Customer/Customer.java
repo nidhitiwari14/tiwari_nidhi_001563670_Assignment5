@@ -103,14 +103,14 @@ public class Customer {
             count++;
     }
     
-    public void addOrder(String restaurentName, String customerName, String deliveryMan, ArrayList<RestaurantMenu> Order, String cost, String deliveryAddress) {
+    public void addOrder(String restaurentName, String customerName, String deliveryMan, ArrayList<RestaurantMenu> Order, Double price, String deliveryAddress) {
         RestaurantOrder order=new RestaurantOrder();
         order.setOrderID(String.valueOf(id));
         order.setCustomerName(customerName);
         order.setRestaurentName(restaurentName);
         order.setDeliveryMan(deliveryMan);
         order.setRestaurantOrder(Order);
-        order.setCost(cost);
+        order.setPrice(price);
         order.setDeliveryAddress(deliveryAddress);
         order.setStatus("New Order");
         orderList.add(order);

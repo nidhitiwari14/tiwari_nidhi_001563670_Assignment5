@@ -5,6 +5,15 @@
  */
 package userinterface.RestaurantAdminRole;
 
+import Business.Customer.Customer;
+import Business.EcoSystem;
+import Business.UserAccount.UserAccount;
+import RestaurantOrder.RestaurantOrder;
+import RetaurantMenu.RestaurantMenu;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author nidhitiwari
@@ -14,8 +23,32 @@ public class ManageOrderDetails extends javax.swing.JPanel {
     /**
      * Creates new form ManageOrderDetails
      */
-    public ManageOrderDetails() {
+    private JPanel userProcessContainer;
+    private UserAccount account;
+    RestaurantOrder order;
+    EcoSystem business;
+    
+    public ManageOrderDetails(JPanel userProcessContainer, UserAccount account, RestaurantOrder order, EcoSystem business) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.account = account;
+        this.order = order;
+        this.business = business;
+        populateTable();
+    }
+    
+    private void populateTable() {
+    lblManageOrderDetails.setText("Order ID:"+order.getOrderID());
+     DefaultTableModel tblModel = (DefaultTableModel) tblManageOrder.getModel();
+     tblModel.setRowCount(0);
+
+     Object[] row = new Object[3];
+            for(RestaurantMenu menu:order.getRestaurantOrder()){
+                 row[0] = menu;
+                 row[1] = menu.getRestaurantName();
+                 row[2] = menu.getPrice();
+                 tblModel.addRow(row);
+      }  
     }
 
     /**
@@ -27,19 +60,103 @@ public class ManageOrderDetails extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblManageOrderDetails = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblManageOrder = new javax.swing.JTable();
+        btnStatus = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+
+        lblManageOrderDetails.setText("Manage Order Details");
+
+        tblManageOrder.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Dish", "Restaurant", "Amount"
+            }
+        ));
+        jScrollPane1.setViewportView(tblManageOrder);
+
+        btnStatus.setText("Ready To Deliver");
+        btnStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStatusActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Back");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(86, 86, 86)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(135, 135, 135)
+                        .addComponent(btnStatus))
+                    .addComponent(jButton2))
+                .addContainerGap(137, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lblManageOrderDetails)
+                .addGap(260, 260, 260))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jButton2)
+                .addGap(12, 12, 12)
+                .addComponent(lblManageOrderDetails)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(btnStatus)
+                .addContainerGap(262, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void btnStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStatusActionPerformed
+        // TODO add your handling code here:
+        order.setStatus("Ready to Deliver");
+        for(Customer cust:business.getCustomerDirectory().getCustomerList()){
+            if(order.getCustomerName().equals(cust.getUsername())){
+                for(RestaurantOrder order : cust.getOrderList()){
+                    order.setStatus("Ready to Deliver");
+                }
+            }
+        }
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnStatusActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnStatus;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblManageOrderDetails;
+    private javax.swing.JTable tblManageOrder;
     // End of variables declaration//GEN-END:variables
 }

@@ -50,18 +50,18 @@ public class ManageOrders extends javax.swing.JPanel {
         this.account = account;
         this.restaurantDirectory = business.getRestaurantDirectory();
         populateTable();
-//        populateDeliveryMan();
+        populateDeliveryMan();
     }
     
-//    public void populateDeliveryMan(){
-//     
-//        comboBoxDeliveryMan.removeAllItems();
-//        comboBoxDeliveryMan.addItem(" ");
-//        for(DeliveryMan delman: business.getDeliveryManDirectory().getDeliveryManList()){
-//            comboBoxDeliveryMan.addItem(delman.getName());
-//        
-//        }
-//    }
+    public void populateDeliveryMan(){
+     
+        comboBoxDeliveryMan.removeAllItems();
+        comboBoxDeliveryMan.addItem(" ");
+        for(DeliveryMan deliveryMan: business.getDeliveryManDirectory().getDeliveryManList()){
+            comboBoxDeliveryMan.addItem(deliveryMan.getFirstName());
+        
+        }
+    }
     
     private void populateTable() {
         DefaultTableModel model = (DefaultTableModel) ManageOrdersTbl.getModel();
@@ -72,13 +72,12 @@ public class ManageOrders extends javax.swing.JPanel {
         for (Restaurant restro:business.getRestaurantDirectory().getRestaurantList()) {
            
             if (restro.getAdminUserName().equals(account.getUsername())) {
-                //System.out.println(restro.getOrderList());
                for(RestaurantOrder menu:restro.getOrderList()){
                 Object[] row = new Object[5];
                 row[0] = menu;
                 row[1] = menu.getCustomerName();
                 row[2] = menu.getDeliveryAddress();
-                row[3] = menu.getCost();
+                row[3] = menu.getPrice();
                 row[4] = menu.getStatus();
                 model.addRow(row);
                }
@@ -229,8 +228,8 @@ public class ManageOrders extends javax.swing.JPanel {
             if(order.getStatus().equals("Assign to Deliveryman")){
                 JOptionPane.showMessageDialog(null,"Already Assigned Order");
             }else{
-//                AssignDeliveryMan viewOrder=new AssignDeliveryMan(userProcessContainer,account,order,business);
-//                userProcessContainer.add("View Order",viewOrder);
+                DeliveryManAssign viewOrder=new DeliveryManAssign(userProcessContainer,account,order,business);
+                userProcessContainer.add("View Order",viewOrder);
                 CardLayout layout=(CardLayout)userProcessContainer.getLayout();
                 layout.next(userProcessContainer);
             }
