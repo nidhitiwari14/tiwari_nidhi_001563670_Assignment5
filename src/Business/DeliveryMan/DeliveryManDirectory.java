@@ -18,6 +18,14 @@ public class DeliveryManDirectory {
         deliveryManList = new ArrayList<DeliveryMan>();
     }
     
+    public ArrayList<DeliveryMan> getDeliveryManList() {
+        return deliveryManList;
+    }
+
+    public void setDeliveryManList(ArrayList<DeliveryMan> deliveryManList) {
+        this.deliveryManList = deliveryManList;
+    }
+    
     public DeliveryMan createDeliveryMan(
             String firstName, 
             String lastName, 
@@ -39,5 +47,16 @@ public class DeliveryManDirectory {
         return deliveryMan;
     }
     
+    public DeliveryMan getDeliveryMan(String firstName){
+        for(DeliveryMan deliveryMan: deliveryManList){
+            if(deliveryMan.getFirstName().equalsIgnoreCase(firstName)){
+                return deliveryMan;
+            }
+        }
+        return null;
+    }
     
+    public void deleteDeliveryMan(DeliveryMan deliveryMan){
+        deliveryManList.remove(deliveryMan);
+    }
 }

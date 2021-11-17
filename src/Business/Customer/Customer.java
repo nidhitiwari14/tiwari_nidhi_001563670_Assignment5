@@ -5,6 +5,10 @@
  */
 package Business.Customer;
 
+import RestaurantOrder.RestaurantOrder;
+import RetaurantMenu.RestaurantMenu;
+import java.util.ArrayList;
+
 /**
  *
  * @author harold
@@ -20,6 +24,7 @@ public class Customer {
     private String username;
     private int id;
     private static int count = 1;
+    private ArrayList<RestaurantOrder> orderList;
 
     public String getFirstName() {
         return firstName;
@@ -85,9 +90,31 @@ public class Customer {
         this.username = username;
     }
     
+    public ArrayList<RestaurantOrder> getOrderList() {
+        return orderList;
+    }
+
+    public void setOrderList(ArrayList<RestaurantOrder> order) {
+        this.orderList = order;
+    }
+    
     public Customer() {
             id = count;
             count++;
+    }
+    
+    public void addOrder(String restaurentName, String customerName, String deliveryMan, ArrayList<RestaurantMenu> Order, String cost, String deliveryAddress) {
+        RestaurantOrder order=new RestaurantOrder();
+        order.setOrderID(String.valueOf(id));
+        order.setCustomerName(customerName);
+        order.setRestaurentName(restaurentName);
+        order.setDeliveryMan(deliveryMan);
+        order.setRestaurantOrder(Order);
+        order.setCost(cost);
+        order.setDeliveryAddress(deliveryAddress);
+        order.setStatus("New Order");
+        orderList.add(order);
+        id++;
     }
     
     
