@@ -5,6 +5,7 @@
  */
 package Business.Restaurant;
 
+import RetaurantMenu.RestaurantMenu;
 import java.util.ArrayList;
 
 /**
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 public class RestaurantDirectory {
     private ArrayList<Restaurant> restaurantList;
     private Restaurant restaurant;
+    private RestaurantMenu menu;
     
     
     public RestaurantDirectory(){
@@ -54,7 +56,32 @@ public class RestaurantDirectory {
     return null;
     }
     
-    public void deleteRestaurant(Restaurant restaurant){
-        restaurantList.remove(restaurant); 
+//    public void deleteRestaurant(Restaurant restaurant){
+//        restaurantList.remove(restaurant); 
+//    }
+    
+    public void updateRestaurantInfo(Restaurant restro,String restaurantName,String contact,String address){
+        restro.setRestaurantName(restaurantName);
+        restro.setRestaurantAddress(address);
+        restro.setRestaurantContact(contact);
+    }
+    
+    public RestaurantMenu AddMenuDishes(Restaurant restro,String dishName,Double price){
+        menu=new RestaurantMenu(dishName, price);
+        restro.addDishes(menu);
+        return menu;
+    }
+    
+    public void DeleteDishes(Restaurant restro,RestaurantMenu menu){
+        restro.removeDishes(menu);
+        
+    }
+    
+    public void deleteRestaurant(String username){
+        for(int i=0;i<restaurantList.size();i++){
+            if(restaurantList.get(i).getAdminUserName().equals(username)){
+                restaurantList.remove(i);
+            }
+        }
     }
 }
