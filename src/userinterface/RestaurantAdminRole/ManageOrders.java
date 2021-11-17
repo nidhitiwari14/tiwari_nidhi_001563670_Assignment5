@@ -102,7 +102,7 @@ public class ManageOrders extends javax.swing.JPanel {
         btnRefresh = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         btnAcceptOrder = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnAssignDeliveryMan = new javax.swing.JButton();
 
         ManageOrdersTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -138,10 +138,10 @@ public class ManageOrders extends javax.swing.JPanel {
             }
         });
 
-        jButton4.setText("Assign Delivery Man");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnAssignDeliveryMan.setText("Assign Delivery Man");
+        btnAssignDeliveryMan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnAssignDeliveryManActionPerformed(evt);
             }
         });
 
@@ -164,7 +164,7 @@ public class ManageOrders extends javax.swing.JPanel {
                                 .addGap(26, 26, 26)
                                 .addComponent(btnAcceptOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(75, 75, 75)
-                                .addComponent(jButton4))
+                                .addComponent(btnAssignDeliveryMan))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 590, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(39, Short.MAX_VALUE))
         );
@@ -181,7 +181,7 @@ public class ManageOrders extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRefresh)
                     .addComponent(btnAcceptOrder)
-                    .addComponent(jButton4))
+                    .addComponent(btnAssignDeliveryMan))
                 .addContainerGap(182, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -217,7 +217,7 @@ public class ManageOrders extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnAcceptOrderActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnAssignDeliveryManActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignDeliveryManActionPerformed
         // TODO add your handling code here:
         int selectedRow = ManageOrdersTbl.getSelectedRow();
         if(selectedRow<0){
@@ -234,16 +234,16 @@ public class ManageOrders extends javax.swing.JPanel {
                 layout.next(userProcessContainer);
             }
         }
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnAssignDeliveryManActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable ManageOrdersTbl;
     private javax.swing.JButton btnAcceptOrder;
+    private javax.swing.JButton btnAssignDeliveryMan;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnRefresh;
     private javax.swing.JComboBox<String> comboBoxDeliveryMan;
-    private javax.swing.JButton jButton4;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

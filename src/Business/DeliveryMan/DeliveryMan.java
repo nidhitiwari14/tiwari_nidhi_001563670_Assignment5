@@ -5,6 +5,10 @@
  */
 package Business.DeliveryMan;
 
+import RestaurantOrder.RestaurantOrder;
+import RetaurantMenu.RestaurantMenu;
+import java.util.ArrayList;
+
 /**
  *
  * @author harold
@@ -27,6 +31,30 @@ public class DeliveryMan {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+    
+    private ArrayList<RestaurantOrder> orderList;
+
+    public ArrayList<RestaurantOrder> getOrderList() {
+        return orderList;
+    }
+
+    public void setOrderList(ArrayList<RestaurantOrder> orderList) {
+        this.orderList = orderList;
+    }
+     
+    public void addOrder(String restaurantName, String customerName, String deliveryMan, ArrayList<RestaurantMenu> Order, Double price, String deliveryAddress) {
+        RestaurantOrder order=new RestaurantOrder();
+        order.setOrderID(String.valueOf(id));
+        order.setCustomerName(customerName);
+        order.setRestaurentName(restaurantName);
+        order.setDeliveryMan(deliveryMan);
+        order.setRestaurantOrder(Order);
+        order.setPrice(price);
+        order.setDeliveryAddress(deliveryAddress);
+        order.setStatus("New Order");
+        orderList.add(order);
+        id++;
     }
 
     public String getContact() {

@@ -14,6 +14,10 @@ public class RestaurantMenu {
     private String dishName;
     private double price;
     
+    public RestaurantMenu(String dishName,Double price) {
+        this.dishName=dishName;
+        this.price=price;
+    }
     
     public String getRestaurantName() {
         return restaurantName;

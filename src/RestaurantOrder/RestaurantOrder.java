@@ -25,7 +25,7 @@ public class RestaurantOrder extends WorkRequest {
     private Restaurant restaurant;
     private String deliveryMan;
     private int quantity;
-    private String cost;
+    private Double price;
 //    private RestaurantMenu menu;
     private ArrayList<RestaurantMenu> RestaurantOrder;
 
@@ -61,10 +61,6 @@ public class RestaurantOrder extends WorkRequest {
         return deliveryMan;
     }
 
-    public void setDeliverMan(String deliveryMan) {
-        this.deliveryMan = deliveryMan;
-    }
-
     public void setCustomerName(String customerName) {
         this.customerName = customerName;
     }
@@ -77,12 +73,12 @@ public class RestaurantOrder extends WorkRequest {
 //        this.RestaurantOrder = Order;
 //    }
     
-    public String getCost() {
-        return cost;
+    public Double getPrice() {
+        return price;
     }
 
-    public void setCost(String cost) {
-        this.cost = cost;
+    public void setPrice(Double price) {
+        this.price = price;
     }
     
     public String getDeliveryAddress() {
