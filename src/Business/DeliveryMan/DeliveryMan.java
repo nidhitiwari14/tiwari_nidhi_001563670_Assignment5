@@ -16,6 +16,7 @@ import java.util.ArrayList;
 public class DeliveryMan {
     private String firstName;
     private String lastName;
+    private String UserName;
 
     public String getFirstName() {
         return firstName;
@@ -41,6 +42,19 @@ public class DeliveryMan {
 
     public void setOrderList(ArrayList<RestaurantOrder> orderList) {
         this.orderList = orderList;
+    }
+    
+    public String getUserName() {
+        return UserName;
+    }
+
+    public void setUserName(String UserName) {
+        this.UserName = UserName;
+    }
+    
+    public DeliveryMan(String UserName){
+        this.UserName=UserName;
+        orderList = new ArrayList<RestaurantOrder>();
     }
      
     public void addOrder(String restaurantName, String customerName, String deliveryMan, ArrayList<RestaurantMenu> Order, Double price, String deliveryAddress) {

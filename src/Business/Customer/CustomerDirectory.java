@@ -60,7 +60,11 @@ public class CustomerDirectory {
         return null;
     }
     
-    public void deleteCustomer(Customer customer){
-        customerList.remove(customer);
+    public void deleteCustomer(String username){
+        for(int i=0;i<customerList.size();i++){
+            if(customerList.get(i).getUsername().equals(username)){
+                customerList.remove(i);
+            }
+        }
     }
 }

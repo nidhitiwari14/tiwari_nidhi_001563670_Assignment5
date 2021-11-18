@@ -26,23 +26,31 @@ public class DeliveryManDirectory {
         this.deliveryManList = deliveryManList;
     }
     
-    public DeliveryMan createDeliveryMan(
-            String firstName, 
-            String lastName, 
-            String contact,
-            String address,
-            String city,
-            String state,
-            String emailId){
-        
-        DeliveryMan deliveryMan = new DeliveryMan();
-        deliveryMan.setFirstName(firstName);
-        deliveryMan.setLastName(lastName);
-        deliveryMan.setAddress(address);
-        deliveryMan.setContact(contact);
-        deliveryMan.setCity(city);
-        deliveryMan.setEmailId(emailId);
-        deliveryMan.setState(state);
+    /* Uncomment on Update */
+//    public DeliveryMan createDeliveryMan(
+//            String firstName, 
+//            String lastName, 
+//            String contact,
+//            String address,
+//            String city,
+//            String state,
+//            String emailId){
+//        
+//        DeliveryMan deliveryMan = new DeliveryMan();
+//        deliveryMan.setFirstName(firstName);
+//        deliveryMan.setLastName(lastName);
+//        deliveryMan.setAddress(address);
+//        deliveryMan.setContact(contact);
+//        deliveryMan.setCity(city);
+//        deliveryMan.setEmailId(emailId);
+//        deliveryMan.setState(state);
+//        deliveryManList.add(deliveryMan);
+//        return deliveryMan;
+//    }
+    private DeliveryMan deliveryMan;
+    
+    public DeliveryMan createDeliveryMan(String username){
+        deliveryMan= new DeliveryMan(username);
         deliveryManList.add(deliveryMan);
         return deliveryMan;
     }
@@ -56,7 +64,12 @@ public class DeliveryManDirectory {
         return null;
     }
     
-    public void deleteDeliveryMan(DeliveryMan deliveryMan){
-        deliveryManList.remove(deliveryMan);
+        
+    public void deleteDeliveryMan(String username){
+         for(int i=0;i<deliveryManList.size();i++){
+            if(deliveryManList.get(i).getUserName().equals(username)){
+                deliveryManList.remove(i);
+            }
+        }
     }
 }

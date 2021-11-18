@@ -49,4 +49,15 @@ public class UserAccountDirectory {
         }
         return true;
     }
+    
+    public void updateUserAccount(UserAccount user,String name,String username, String password){
+       
+        user.setName(name);
+        user.setUsername(username);
+        user.setPassword(password);
+    }
+    
+    public void deleteUserAccount(UserAccount user){
+        userAccountList.remove(user);
+    }
 }
