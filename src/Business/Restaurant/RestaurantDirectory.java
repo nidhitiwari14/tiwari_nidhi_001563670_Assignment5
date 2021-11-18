@@ -66,7 +66,7 @@ public class RestaurantDirectory {
         restro.setRestaurantContact(contact);
     }
     
-    public RestaurantMenu AddMenuDishes(Restaurant restro,String dishName,Double price){
+    public RestaurantMenu AddMenuItems(Restaurant restro,String dishName,Double price){
         menu=new RestaurantMenu(dishName, price);
         restro.addDishes(menu);
         return menu;
