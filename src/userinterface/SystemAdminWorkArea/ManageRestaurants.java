@@ -43,17 +43,20 @@ public class ManageRestaurants extends javax.swing.JPanel {
         
         model.setRowCount(0);
         
-       // for()
         for (UserAccount user : business.getUserAccountDirectory().getUserAccountList()) {
-           
-            if ("Business.Role.AdminRole".equals(user.getRole().getClass().getName())) {
-                Object[] row = new Object[3];
+            
+            for (Restaurant rest:business.getRestaurantDirectory().getRestaurantList()) {
+            if ("Business.Role.AdminRole".equals(user.getRole().getClass().getName()) && rest.getAdminUserName().equals(user.getUsername())) {
+                Object[] row = new Object[5];
                
                 row[0] = user.getName();
                 row[1] = user.getUsername();
                 row[2] = user.getPassword();
+                row[3] = rest.getRestaurantContact();
+                row[4] = rest.getRestaurantAddress();
                 
                 model.addRow(row);
+            }
             }
             
         }
@@ -82,6 +85,10 @@ public class ManageRestaurants extends javax.swing.JPanel {
         btnSubmit = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblManageRest = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        txtRestaurantAddress = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        txtRestaurantContact = new javax.swing.JTextField();
 
         btnUpdate.setText("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -129,16 +136,26 @@ public class ManageRestaurants extends javax.swing.JPanel {
 
         tblManageRest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Restaurant Name", "Username", "Password"
+                "Restaurant Name", "Username", "Password", "Contact", "Address"
             }
         ));
         jScrollPane1.setViewportView(tblManageRest);
+
+        jLabel1.setText("Restaurant Address");
+
+        jLabel2.setText("Restaurant Contact");
+
+        txtRestaurantContact.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRestaurantContactActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -152,19 +169,21 @@ public class ManageRestaurants extends javax.swing.JPanel {
                         .addGap(146, 146, 146)
                         .addComponent(lblManageCustomerTitle))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(156, 156, 156)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(154, 154, 154)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblRestaurantUsername)
                             .addComponent(lblRestaurantName)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(lblRestaurantPassword))
-                            .addComponent(lblRestaurantUsername))
-                        .addGap(137, 137, 137)
+                            .addComponent(lblRestaurantPassword)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnSubmit)
                             .addComponent(txtRestaurantName, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
                             .addComponent(txtRestaurantUserName)
-                            .addComponent(txtRestaurantPassword)))
+                            .addComponent(txtRestaurantPassword)
+                            .addComponent(txtRestaurantAddress)
+                            .addComponent(txtRestaurantContact)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(92, 92, 92)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -174,8 +193,8 @@ public class ManageRestaurants extends javax.swing.JPanel {
                                 .addComponent(btnConfirm)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnDelete))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(104, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -191,24 +210,32 @@ public class ManageRestaurants extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblRestaurantName)
                     .addComponent(txtRestaurantName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblRestaurantUsername)
-                    .addComponent(txtRestaurantUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47)
+                    .addComponent(txtRestaurantUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblRestaurantUsername))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtRestaurantPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblRestaurantPassword))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblRestaurantPassword)
-                    .addComponent(txtRestaurantPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
+                    .addComponent(jLabel1)
+                    .addComponent(txtRestaurantAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtRestaurantContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
                 .addComponent(btnSubmit)
-                .addGap(32, 32, 32)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnUpdate)
                     .addComponent(btnConfirm)
                     .addComponent(btnDelete))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -349,23 +376,25 @@ public class ManageRestaurants extends javax.swing.JPanel {
         String name = txtRestaurantName.getText();
         String username=txtRestaurantUserName.getText();
         String password=txtRestaurantPassword.getText();
+        String address=txtRestaurantAddress.getText();
+        String contact=txtRestaurantContact.getText();
               
         try {
              if(name==null || name.isEmpty()){
                 throw new NullPointerException(" Name field is Empty");
                 
                 
-            }else if(name.length()<5 || Pattern.matches("^[A-Za-z]+$", name)==false){
+            }else if(Pattern.matches("^[A-Za-z]+$", name)==false){
                 throw new Exception("Please enter valid  Name");
                 
             }
         } catch(NullPointerException e){
-            JOptionPane.showMessageDialog(null, " Name is Empty");
+            JOptionPane.showMessageDialog(null, "Name is Empty");
            
             return;
             
         }catch (Exception e){
-            JOptionPane.showMessageDialog(null, "  Name is invalid");
+            JOptionPane.showMessageDialog(null, "Name is invalid");
        
             return;
         }
@@ -416,13 +445,20 @@ public class ManageRestaurants extends javax.swing.JPanel {
         }else{
             
         UserAccount ua1 =business.getUserAccountDirectory().createUserAccount(name,username,password,null, new AdminRole());
-        Restaurant restro= business.getRestaurantDirectory().createRestaurantInfo(username);
+        Restaurant restro= business.getRestaurantDirectory().createRestaurantInfo(name, username, address, contact);
         populateManageRestaurantTable();
+        
         txtRestaurantName.setText("");
         txtRestaurantUserName.setText("");
         txtRestaurantPassword.setText("");
+        txtRestaurantAddress.setText("");
+        txtRestaurantContact.setText("");
         }
     }//GEN-LAST:event_btnSubmitActionPerformed
+
+    private void txtRestaurantContactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRestaurantContactActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRestaurantContactActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -431,12 +467,16 @@ public class ManageRestaurants extends javax.swing.JPanel {
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnSubmit;
     private javax.swing.JButton btnUpdate;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblManageCustomerTitle;
     private javax.swing.JLabel lblRestaurantName;
     private javax.swing.JLabel lblRestaurantPassword;
     private javax.swing.JLabel lblRestaurantUsername;
     private javax.swing.JTable tblManageRest;
+    private javax.swing.JTextField txtRestaurantAddress;
+    private javax.swing.JTextField txtRestaurantContact;
     private javax.swing.JTextField txtRestaurantName;
     private javax.swing.JTextField txtRestaurantPassword;
     private javax.swing.JTextField txtRestaurantUserName;

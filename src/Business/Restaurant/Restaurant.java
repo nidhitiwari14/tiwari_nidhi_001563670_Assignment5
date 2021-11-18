@@ -33,8 +33,16 @@ public class Restaurant {
     private String adminUserName;
     
     
-    public Restaurant(String UserName) {
-        this.adminUserName=UserName;
+    public Restaurant(String restaurantName, String username, String address,String contact) {
+        this.adminUserName=username;
+        this.restaurantName = restaurantName;
+        this.restaurantAddress = address;
+        this.restaurantContact = contact;
+        Menu=new ArrayList<RestaurantMenu>();
+        orderList=new ArrayList<RestaurantOrder>();
+    }
+    
+    public Restaurant() {
         Menu=new ArrayList<RestaurantMenu>();
         orderList=new ArrayList<RestaurantOrder>();
     }

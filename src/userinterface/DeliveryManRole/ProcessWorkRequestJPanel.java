@@ -35,6 +35,14 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.request = request;
     }
+    
+    public ProcessWorkRequestJPanel(JPanel userProcessContainer, RestaurantOrder order, EcoSystem business) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.order = order;
+        this.business= business;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -58,6 +66,12 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
         });
 
         jLabel1.setText("Result");
+
+        resultJTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resultJTextFieldActionPerformed(evt);
+            }
+        });
 
         backJButton.setText("Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -140,6 +154,10 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_submitJButtonActionPerformed
+
+    private void resultJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resultJTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_resultJTextFieldActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;

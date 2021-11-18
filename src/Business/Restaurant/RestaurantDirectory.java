@@ -40,8 +40,12 @@ public class RestaurantDirectory {
 //        return restaurant;
 //    }
     
-    public Restaurant createRestaurantInfo(String userName){
-        restaurant= new Restaurant(userName);
+     public Restaurant createRestaurantInfo(String restaurantName, String username, String address,String contact){
+        Restaurant restaurant = new Restaurant();
+        restaurant.setAdminUserName(username);
+        restaurant.setRestaurantName(restaurantName);
+        restaurant.setRestaurantContact(contact);
+        restaurant.setRestaurantAddress(address);
         restaurantList.add(restaurant);
         
         return restaurant;
