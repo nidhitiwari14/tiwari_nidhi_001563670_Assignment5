@@ -23,7 +23,7 @@ public class Customer {
     private String emailId;
     private String username;
     private int id;
-    private static int count = 1;
+    private static int count = 1001;
     private ArrayList<RestaurantOrder> orderList;
 
     public String getFirstName() {
@@ -101,6 +101,12 @@ public class Customer {
     public Customer(String username){
         this.username=username;
         orderList=new ArrayList<RestaurantOrder>();
+        id = count;
+        count++;
+    }
+    
+    public Customer(){
+        orderList = new ArrayList<RestaurantOrder>();
         id = count;
         count++;
     }

@@ -42,11 +42,11 @@ public class ManageOrderDetails extends javax.swing.JPanel {
      DefaultTableModel tblModel = (DefaultTableModel) tblManageOrder.getModel();
      tblModel.setRowCount(0);
 
-     Object[] row = new Object[3];
+     Object[] row = new Object[2];
             for(RestaurantMenu menu:order.getRestaurantOrder()){
                  row[0] = menu;
-                 row[1] = menu.getRestaurantName();
-                 row[2] = menu.getPrice();
+                 row[1] = menu.getPrice();
+//                 row[2] = menu.getRestaurantName();
                  tblModel.addRow(row);
       }  
     }
@@ -60,23 +60,25 @@ public class ManageOrderDetails extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblManageOrderDetails = new javax.swing.JLabel();
+        lblManageOrderDetailsLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblManageOrder = new javax.swing.JTable();
         btnStatus = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        lblManageOrderDetails = new javax.swing.JLabel();
 
-        lblManageOrderDetails.setText("Manage Order Details");
+        lblManageOrderDetailsLabel.setFont(new java.awt.Font("Lucida Grande", 3, 18)); // NOI18N
+        lblManageOrderDetailsLabel.setText("Manage Order Details");
 
         tblManageOrder.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Dish", "Restaurant", "Price"
+                "Dish", "Price"
             }
         ));
         jScrollPane1.setViewportView(tblManageOrder);
@@ -95,6 +97,9 @@ public class ManageOrderDetails extends javax.swing.JPanel {
             }
         });
 
+        lblManageOrderDetails.setFont(new java.awt.Font("Lucida Grande", 3, 18)); // NOI18N
+        lblManageOrderDetails.setText("<value>");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -102,30 +107,33 @@ public class ManageOrderDetails extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(86, 86, 86)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(135, 135, 135)
                         .addComponent(btnStatus))
-                    .addComponent(jButton2))
-                .addContainerGap(137, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(lblManageOrderDetails)
-                .addGap(260, 260, 260))
+                    .addComponent(jButton2)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(86, 86, 86)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblManageOrderDetailsLabel)
+                                .addGap(43, 43, 43)
+                                .addComponent(lblManageOrderDetails))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(230, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jButton2)
-                .addGap(12, 12, 12)
-                .addComponent(lblManageOrderDetails)
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblManageOrderDetailsLabel)
+                    .addComponent(lblManageOrderDetails))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
                 .addComponent(btnStatus)
-                .addContainerGap(262, Short.MAX_VALUE))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -157,6 +165,7 @@ public class ManageOrderDetails extends javax.swing.JPanel {
     private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblManageOrderDetails;
+    private javax.swing.JLabel lblManageOrderDetailsLabel;
     private javax.swing.JTable tblManageOrder;
     // End of variables declaration//GEN-END:variables
 }

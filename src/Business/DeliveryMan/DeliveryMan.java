@@ -14,9 +14,18 @@ import java.util.ArrayList;
  * @author harold
  */
 public class DeliveryMan {
+    private String name;
     private String firstName;
     private String lastName;
     private String UserName;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -55,6 +64,12 @@ public class DeliveryMan {
     public DeliveryMan(String UserName){
         this.UserName=UserName;
         orderList = new ArrayList<RestaurantOrder>();
+    }
+    
+    public DeliveryMan(){
+        orderList = new ArrayList<RestaurantOrder>();
+        id = count;
+        count++;
     }
      
     public void addOrder(String restaurantName, String customerName, String deliveryMan, ArrayList<RestaurantMenu> Order, Double price, String deliveryAddress) {
@@ -134,13 +149,8 @@ public class DeliveryMan {
     private int id;
     private static int count = 1;
     
-    public DeliveryMan() {
-            id = count;
-            count++;
-    }
-    
     @Override
     public String toString() {
-        return firstName;
+        return name;
     }
 }

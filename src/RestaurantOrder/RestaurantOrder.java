@@ -17,7 +17,7 @@ import java.util.UUID;
  * @author nidhitiwari
  */
 public class RestaurantOrder extends WorkRequest {
-    private String orderID = UUID.randomUUID().toString();
+    private String orderID;
     private String restaurentName;
     private String customerName;
     private Customer customer;
@@ -28,7 +28,6 @@ public class RestaurantOrder extends WorkRequest {
     private Double price;
     private String comment;
     private String dishName;
-//    private RestaurantMenu menu;
     private ArrayList<RestaurantMenu> RestaurantOrder;
 
     public String getOrderID() {

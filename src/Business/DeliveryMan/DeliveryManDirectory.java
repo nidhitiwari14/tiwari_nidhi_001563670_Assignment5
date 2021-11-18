@@ -55,6 +55,16 @@ public class DeliveryManDirectory {
         return deliveryMan;
     }
     
+    
+    public DeliveryMan createDeliveryMan(String name, String username){
+        DeliveryMan deli = new DeliveryMan();
+        deli.setName(name);
+        deli.setUserName(username);
+        deliveryManList.add(deli);
+        
+        return deli;
+    }
+    
     public DeliveryMan getDeliveryMan(String firstName){
         for(DeliveryMan deliveryMan: deliveryManList){
             if(deliveryMan.getFirstName().equalsIgnoreCase(firstName)){

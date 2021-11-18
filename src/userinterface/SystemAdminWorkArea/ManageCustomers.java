@@ -357,17 +357,17 @@ public class ManageCustomers extends javax.swing.JPanel {
             if(name==null || name.isEmpty()){
                 throw new NullPointerException(" Name field is Empty");
 
-            }else if(name.length()<5 || Pattern.matches("^[A-Za-z]+$", name)==false){
+            }else if(Pattern.matches("^[A-Za-z]+$", name)==false){
                 throw new Exception("Please enter valid  Name");
 
             }
         } catch(NullPointerException e){
-            JOptionPane.showMessageDialog(null, " Name is Empty");
+            JOptionPane.showMessageDialog(null, "Name is Empty");
 
             return;
 
-        }catch (Exception e){
-            JOptionPane.showMessageDialog(null, "  Name is invalid");
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Name is invalid");
 
             return;
         }
@@ -376,16 +376,13 @@ public class ManageCustomers extends javax.swing.JPanel {
             if(username==null || username.isEmpty()){
                 throw new NullPointerException("User Name field is Empty");
 
-            }else if(username.length()<5){
-                throw new Exception("Please enter valid User Name");
-
             }
         } catch(NullPointerException e){
             JOptionPane.showMessageDialog(null, "User Name is Empty");
 
             return;
 
-        }catch (Exception e){
+        } catch (Exception e){
             JOptionPane.showMessageDialog(null, " User Name is invalid");
 
             return;
@@ -414,7 +411,7 @@ public class ManageCustomers extends javax.swing.JPanel {
         }else{
 
             UserAccount ua1 =business.getUserAccountDirectory().createUserAccount(name,username,password, null, new CustomerRole());
-            Customer cust= business.getCustomerDirectory().createCustomer(username);
+            Customer cust= business.getCustomerDirectory().createCustomer(name,username);
             populateManageCustomerTable();
             txtCustomerFirstName.setText("");
             txtCustomerUsername.setText("");

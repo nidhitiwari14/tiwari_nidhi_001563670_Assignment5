@@ -69,13 +69,11 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
                // System.out.println(restro.getOrderList());
                for(RestaurantOrder menu:cust.getOrderList()){
                    
-                Object[] row = new Object[10];
+                Object[] row = new Object[4];
                 row[0] = menu;
                 row[1] = menu.getRestaurentName();
-                row[2] = menu.getDishName();
-                row[3] = menu.getPrice();
-              
-               row[4] = menu.getComment();
+                row[2] = menu.getPrice();
+                row[3] = menu.getComment();
                 model.addRow(row);
                }
                 
@@ -109,20 +107,20 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
 
         tblOrder.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Order", "Restaurant", "Dish", "Price", "Comment"
+                "Order", "Restaurant", "Price", "Comment"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, true, true
+                false, false, true, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -137,7 +135,6 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
         if (tblOrder.getColumnModel().getColumnCount() > 0) {
             tblOrder.getColumnModel().getColumn(0).setResizable(false);
             tblOrder.getColumnModel().getColumn(1).setResizable(false);
-            tblOrder.getColumnModel().getColumn(2).setResizable(false);
         }
 
         requestTestJButton.setText("Order Food");
@@ -299,11 +296,13 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
            for (Customer cust:business.getCustomerDirectory().getCustomerList()) {
            
             if (cust.getUsername().equals(userAccount.getUsername())) {
-               for(RestaurantOrder menu:cust.getOrderList()){
-                String orderID =  menu.getOrderID() ;
+               for(RestaurantOrder restOrder:cust.getOrderList()){
+                String orderID =  restOrder.getOrderID() ;
                    
                if (orderID.equals(ro.getOrderID())){
-                menu.setComment(comment);
+                restOrder.setComment(comment);
+                JOptionPane.showMessageDialog(null,"Comment Submitted");
+                txtComment.setText("");
                }
                 
             }
