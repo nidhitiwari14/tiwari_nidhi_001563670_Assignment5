@@ -4,25 +4,36 @@
  */
 package userinterface.DeliveryManRole;
 
+import Business.Customer.Customer;
+import Business.EcoSystem;
+import Business.Restaurant.Restaurant;
+import Business.WorkQueue.RequestResult;
+import RestaurantOrder.RestaurantOrder;
 import java.awt.CardLayout;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
  *
- * @author raunak
+ * @author nidhi
  */
 
 
 public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
 
     JPanel userProcessContainer;
+    RequestResult request;
+    RestaurantOrder order;
+    EcoSystem business;
+    Restaurant res;
     /**
      * Creates new form ProcessWorkRequestJPanel
      */
-    public ProcessWorkRequestJPanel(JPanel userProcessContainer) {
+    public ProcessWorkRequestJPanel(JPanel userProcessContainer, RequestResult request) {
         initComponents();
-        
+        this.userProcessContainer = userProcessContainer;
+        this.request = request;
     }
 
     /**
@@ -70,7 +81,7 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
                         .addComponent(resultJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 379, Short.MAX_VALUE)
                         .addComponent(submitJButton)
                         .addGap(63, 63, 63))))
         );
@@ -85,7 +96,7 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(submitJButton)
                     .addComponent(backJButton))
-                .addContainerGap(169, Short.MAX_VALUE))
+                .addContainerGap(283, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -94,15 +105,40 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        DeliveryManWorkAreaJPanel dwjp = (DeliveryManWorkAreaJPanel) component;
-        dwjp.populateTable();
+        DeliveryManWorkAreaJPanel dmp = (DeliveryManWorkAreaJPanel) component;
+        dmp.populateTable();
         
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
+       String status=resultJTextField.getText();
+        try {
+             if(status==null || status.isEmpty()){
+                throw new Exception(" Status field is Empty");
+             }       
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(null, " Status is Empty");
+            return;
+        }
        
+        order.setStatus(status);
+         for(Customer cust:business.getCustomerDirectory().getCustomerList()){
+            if(order.getCustomerName().equals(cust.getUsername())){
+                for(RestaurantOrder order1 : cust.getOrderList()){
+                    if(order1.equals(order))
+                    {
+                        order1.setStatus(status);
+                    }
+                    
+                }
+            }
+        }
+         resultJTextField.setText(" ");
+         userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
     }//GEN-LAST:event_submitJButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

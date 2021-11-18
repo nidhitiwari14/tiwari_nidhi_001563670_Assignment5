@@ -21,8 +21,17 @@ public class Restaurant {
     private String restaurantManager;
     private RestaurantMenuDirectory restaurantMenuDirectory; 
     private ArrayList<RestaurantMenu> Menu;
+
+    public ArrayList<RestaurantMenu> getMenu() {
+        return Menu;
+    }
+
+    public void setMenu(ArrayList<RestaurantMenu> Menu) {
+        this.Menu = Menu;
+    }
     private ArrayList<RestaurantOrder> orderList;
     private String adminUserName;
+    
     
     public Restaurant(String UserName) {
         this.adminUserName=UserName;
@@ -94,6 +103,24 @@ public class Restaurant {
     public void removeDishes(RestaurantMenu menu){
         
         Menu.remove(menu);
+    }
+    
+    int id=1001;
+    
+    public void addOrder(String restaurentName, String customerName, String deliveryMan, ArrayList<RestaurantMenu> Order, Double price, String deliveryAddress) {
+        RestaurantOrder order=new RestaurantOrder();
+        order.setOrderID(String.valueOf(id));
+        order.setCustomerName(customerName);
+        order.setRestaurentName(restaurentName);
+        order.setDeliveryMan(deliveryMan);
+        order.setRestaurantOrder(Order);
+        order.setPrice(price);
+        order.setDeliveryAddress(deliveryAddress);
+        order.setStatus("New Order");
+        order.setComment(" ");
+        orderList.add(order);
+        
+        id++;
     }
     
     @Override
