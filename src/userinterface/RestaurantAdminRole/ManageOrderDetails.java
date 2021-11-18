@@ -76,7 +76,7 @@ public class ManageOrderDetails extends javax.swing.JPanel {
                 {null, null, null}
             },
             new String [] {
-                "Dish", "Restaurant", "Amount"
+                "Dish", "Restaurant", "Price"
             }
         ));
         jScrollPane1.setViewportView(tblManageOrder);

@@ -328,7 +328,7 @@ public class ManageDeliveryMan extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null,"  User Name already exists ");
         }else{
 
-        UserAccount ua1 =business.getUserAccountDirectory().createUserAccount(username,password, null, new DeliverManRole());
+        UserAccount ua1 =business.getUserAccountDirectory().createUserAccount(name, username,password, null, new DeliverManRole());
         DeliveryMan deliveryMan= business.getDeliveryManDirectory().createDeliveryMan(username);
         populateManageDeliveryManTable();
             txtDeliveryManName.setText("");

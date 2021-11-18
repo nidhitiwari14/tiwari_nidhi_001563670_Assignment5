@@ -30,9 +30,9 @@ public class ManageRestaurantInfo extends javax.swing.JPanel {
         this.account=account;
         this.business=business;
         this.userProcessContainer=userProcessContainer;
-        txtRestaurantName.setEnabled(false);
-        txtRestaurantContact.setEnabled(false);
-        txtRestaurantAddress.setEnabled(false);
+//        txtRestaurantName.setEnabled(false);
+//        txtRestaurantContact.setEnabled(false);
+//        txtRestaurantAddress.setEnabled(false);
         btnSave.setEnabled(false);
         btnUpdate.setEnabled(true);
         
@@ -75,8 +75,6 @@ public class ManageRestaurantInfo extends javax.swing.JPanel {
             }
         });
 
-        txtRestaurantAddress.setText("jTextField3");
-
         btnSave.setText("Save");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,13 +110,13 @@ public class ManageRestaurantInfo extends javax.swing.JPanel {
                         .addGap(35, 35, 35)
                         .addComponent(btnBack)
                         .addGap(108, 108, 108)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnSave)
-                                    .addComponent(btnUpdate))
-                                .addGap(79, 79, 79)))))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(196, 196, 196)
+                        .addComponent(btnSave)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnUpdate)
+                        .addGap(79, 79, 79)))
                 .addContainerGap(167, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -144,15 +142,16 @@ public class ManageRestaurantInfo extends javax.swing.JPanel {
                     .addComponent(jLabel4)
                     .addComponent(txtRestaurantAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47)
-                .addComponent(btnUpdate)
-                .addGap(26, 26, 26)
-                .addComponent(btnSave)
-                .addContainerGap(164, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnUpdate)
+                    .addComponent(btnSave))
+                .addContainerGap(219, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
+        
         txtRestaurantName.setEnabled(true);
         txtRestaurantContact.setEnabled(true);
         txtRestaurantAddress.setEnabled(true);
@@ -242,11 +241,11 @@ public class ManageRestaurantInfo extends javax.swing.JPanel {
         //System.out.println(system.getRestaurantDirectory().getRestaurantList().get(0).getName());
 
         //system.getRestaurantDirectory().getRestaurantList().updateRestaurantInfo(name, number, address);
-        txtRestaurantName.setEnabled(false);
-        txtRestaurantContact.setEnabled(false);
-        txtRestaurantAddress.setEnabled(false);
-        btnSave.setEnabled(false);
-        btnUpdate.setEnabled(true);
+//        txtRestaurantName.setEnabled(false);
+//        txtRestaurantContact.setEnabled(false);
+//        txtRestaurantAddress.setEnabled(false);
+//        btnSave.setEnabled(false);
+//        btnUpdate.setEnabled(true);
 
     }//GEN-LAST:event_btnSaveActionPerformed
 

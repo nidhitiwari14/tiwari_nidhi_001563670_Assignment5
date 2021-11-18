@@ -5,7 +5,9 @@
  */
 package userinterface.SystemAdminWorkArea;
 
+import Business.Customer.Customer;
 import Business.EcoSystem;
+import Business.Role.CustomerRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -92,6 +94,11 @@ public class ManageCustomers extends javax.swing.JPanel {
         lblCustomerPassword.setText("Password");
 
         btnSubmit.setText("Submit");
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitActionPerformed(evt);
+            }
+        });
 
         tblManageCust.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -320,9 +327,7 @@ public class ManageCustomers extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Password is of invalid pattern");
 
             return;
-        }
-        
-        
+        } 
 
         if (business.getUserAccountDirectory().checkIfUsernameIsUnique(usernname)==false) {
             JOptionPane.showMessageDialog(null,"  User Name already exists ");
@@ -340,6 +345,82 @@ public class ManageCustomers extends javax.swing.JPanel {
             txtCustomerPassword.setText("");
         }
     }//GEN-LAST:event_btnConfirmActionPerformed
+
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+        // TODO add your handling code here:
+        String name = txtCustomerFirstName.getText();
+        String password=txtCustomerPassword.getText();
+        String username=txtCustomerUsername.getText();
+        
+
+        try {
+            if(name==null || name.isEmpty()){
+                throw new NullPointerException(" Name field is Empty");
+
+            }else if(name.length()<5 || Pattern.matches("^[A-Za-z]+$", name)==false){
+                throw new Exception("Please enter valid  Name");
+
+            }
+        } catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, " Name is Empty");
+
+            return;
+
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "  Name is invalid");
+
+            return;
+        }
+
+        try {
+            if(username==null || username.isEmpty()){
+                throw new NullPointerException("User Name field is Empty");
+
+            }else if(username.length()<5){
+                throw new Exception("Please enter valid User Name");
+
+            }
+        } catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, "User Name is Empty");
+
+            return;
+
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, " User Name is invalid");
+
+            return;
+        }
+
+        try {
+
+            if(password==null || password.isEmpty()){
+                throw new NullPointerException("Pwd field is Empty");
+            }else if(Pattern.matches("^(?=(.*[a-z]){1,})(?=(.*[\\d]){1,})(?=(.*[\\W]){1,})(?!.*\\s).{5,30}$", password)==false){
+                throw new Exception("Invalid Password");
+            }
+
+        }  catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, "Password is Empty");
+
+            return;
+        }catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Password is of invalid pattern");
+
+            return;
+        }
+
+        if (business.getUserAccountDirectory().checkIfUsernameIsUnique(username)==false) {
+            JOptionPane.showMessageDialog(null,"  User Name already exists ");
+        }else{
+
+            UserAccount ua1 =business.getUserAccountDirectory().createUserAccount(name,username,password, null, new CustomerRole());
+            Customer cust= business.getCustomerDirectory().createCustomer(username);
+            populateManageCustomerTable();
+            txtCustomerFirstName.setText("");
+            txtCustomerUsername.setText("");
+            txtCustomerPassword.setText("");
+        }
+    }//GEN-LAST:event_btnSubmitActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

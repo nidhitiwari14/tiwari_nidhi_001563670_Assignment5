@@ -83,7 +83,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="valueLabel">
+    <Component class="javax.swing.JLabel" name="lblManager">
       <Properties>
         <Property name="text" type="java.lang.String" value="&lt;value&gt;"/>
       </Properties>

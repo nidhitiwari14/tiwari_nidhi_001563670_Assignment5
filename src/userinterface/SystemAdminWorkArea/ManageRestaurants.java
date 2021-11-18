@@ -7,6 +7,7 @@ package userinterface.SystemAdminWorkArea;
 
 import Business.EcoSystem;
 import Business.Restaurant.Restaurant;
+import Business.Role.AdminRole;
 import Business.Role.CustomerRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
@@ -409,13 +410,12 @@ public class ManageRestaurants extends javax.swing.JPanel {
              
              return;
         }
-         
-         
+           
         if (business.getUserAccountDirectory().checkIfUsernameIsUnique(username)==false) {
             JOptionPane.showMessageDialog(null,"  User Name already exists ");
         }else{
             
-        UserAccount ua1 =business.getUserAccountDirectory().createUserAccount(username,password, null, new CustomerRole());
+        UserAccount ua1 =business.getUserAccountDirectory().createUserAccount(name,username,password,null, new AdminRole());
         Restaurant restro= business.getRestaurantDirectory().createRestaurantInfo(username);
         populateManageRestaurantTable();
         txtRestaurantName.setText("");

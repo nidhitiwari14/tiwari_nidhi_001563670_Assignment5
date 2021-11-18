@@ -98,9 +98,11 @@ public class Customer {
         this.orderList = order;
     }
     
-    public Customer() {
-            id = count;
-            count++;
+    public Customer(String username){
+        this.username=username;
+        orderList=new ArrayList<RestaurantOrder>();
+        id = count;
+        count++;
     }
     
     public void addOrder(String restaurentName, String customerName, String deliveryMan, ArrayList<RestaurantMenu> Order, Double price, String deliveryAddress) {

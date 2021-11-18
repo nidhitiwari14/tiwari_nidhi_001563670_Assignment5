@@ -5,6 +5,7 @@
  */
 package userinterface.RestaurantAdminRole;
 
+import Business.Customer.Customer;
 import Business.DeliveryMan.DeliveryMan;
 import Business.EcoSystem;
 import Business.Restaurant.Restaurant;
@@ -37,10 +38,10 @@ public class ManageOrders extends javax.swing.JPanel {
     public ManageOrders(
             JPanel userProcessContainer,
             UserAccount account, 
-            EcoSystem business, 
-            RestaurantDirectory restaurantDirectory, 
-            RestaurantMenuDirectory restaurantMenuDirectory, 
-            RestaurantOrderDirectory restaurantOrderDirectory
+            EcoSystem business
+//            ,RestaurantDirectory restaurantDirectory, 
+//            RestaurantMenuDirectory restaurantMenuDirectory, 
+//            RestaurantOrderDirectory restaurantOrderDirectory
     ) {
         initComponents();
         
@@ -48,7 +49,7 @@ public class ManageOrders extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.business = business;
         this.account = account;
-        this.restaurantDirectory = business.getRestaurantDirectory();
+//        this.restaurantDirectory = business.getRestaurantDirectory();
         populateTable();
         populateDeliveryMan();
     }
@@ -103,6 +104,11 @@ public class ManageOrders extends javax.swing.JPanel {
         btnBack = new javax.swing.JButton();
         btnAcceptOrder = new javax.swing.JButton();
         btnAssignDeliveryMan = new javax.swing.JButton();
+        btnRejectOrder = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblFeedback = new javax.swing.JTable();
 
         ManageOrdersTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -131,7 +137,7 @@ public class ManageOrders extends javax.swing.JPanel {
             }
         });
 
-        btnAcceptOrder.setText("Accept or Reject Order");
+        btnAcceptOrder.setText("Accept Order");
         btnAcceptOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAcceptOrderActionPerformed(evt);
@@ -144,6 +150,35 @@ public class ManageOrders extends javax.swing.JPanel {
                 btnAssignDeliveryManActionPerformed(evt);
             }
         });
+
+        btnRejectOrder.setText("Reject Order");
+        btnRejectOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRejectOrderActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("View Feedback");
+
+        jButton1.setText("Click to View Customer Feedback");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        tblFeedback.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Order Id", "Customer Name", "Address", "Price", "Comment"
+            }
+        ));
+        jScrollPane2.setViewportView(tblFeedback);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -158,15 +193,23 @@ public class ManageOrders extends javax.swing.JPanel {
                         .addComponent(comboBoxDeliveryMan, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnRefresh)
                                 .addGap(26, 26, 26)
-                                .addComponent(btnAcceptOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(75, 75, 75)
+                                .addComponent(btnAcceptOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnRejectOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
                                 .addComponent(btnAssignDeliveryMan))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 590, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(39, Short.MAX_VALUE))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 744, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,8 +224,15 @@ public class ManageOrders extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRefresh)
                     .addComponent(btnAcceptOrder)
-                    .addComponent(btnAssignDeliveryMan))
-                .addContainerGap(182, Short.MAX_VALUE))
+                    .addComponent(btnAssignDeliveryMan)
+                    .addComponent(btnRejectOrder))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -236,6 +286,54 @@ public class ManageOrders extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnAssignDeliveryManActionPerformed
 
+    private void btnRejectOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectOrderActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = ManageOrdersTbl.getSelectedRow();
+        if(selectedRow<0){
+            JOptionPane.showMessageDialog(null,"Please select a row from the table to view details","Warning",JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+            RestaurantOrder order  = (RestaurantOrder)ManageOrdersTbl.getValueAt(selectedRow, 0);
+            order.setStatus("Reject");           
+            populateTable();
+        }
+    }//GEN-LAST:event_btnRejectOrderActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) tblFeedback.getModel();
+        model.setRowCount(0);
+        for (Restaurant restro:business.getRestaurantDirectory().getRestaurantList()) {
+           
+            if (restro.getAdminUserName().equals(account.getUsername())) {
+                //System.out.println(restro.getOrderList());
+                
+                
+               for(RestaurantOrder menu:restro.getOrderList()){
+                   
+               for (Customer cust:business.getCustomerDirectory().getCustomerList()) {
+               
+                    if (cust.getUsername().equals(menu.getCustomerName())) {
+                       for(RestaurantOrder menu1:cust.getOrderList()){
+                           
+                       
+                        Object[] row = new Object[5];
+                        row[0] = menu;
+                        row[1] = menu.getCustomerName();
+                        row[2] = menu.getDeliveryAddress();
+                        row[3] = menu.getPrice();
+                        row[4] = menu1.getComment();
+                        model.addRow(row);
+               }
+                
+            }
+            
+        }
+               }
+            }
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable ManageOrdersTbl;
@@ -243,7 +341,12 @@ public class ManageOrders extends javax.swing.JPanel {
     private javax.swing.JButton btnAssignDeliveryMan;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnRefresh;
+    private javax.swing.JButton btnRejectOrder;
     private javax.swing.JComboBox<String> comboBoxDeliveryMan;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tblFeedback;
     // End of variables declaration//GEN-END:variables
 }

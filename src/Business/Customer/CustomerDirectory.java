@@ -27,29 +27,31 @@ public class CustomerDirectory {
         this.customerList = customerList;
     }
    
-    public Customer createCustomer(
-         String firstName,
-         String lastName,
-         String contact,
-         String address,
-         String city,
-         String state,
-         String emailId,
-         String username
-    ){
-        
-        Customer customer = new Customer();
-        customer.setFirstName(firstName);
-        customer.setLastName(lastName);
-        customer.setAddress(address);
-        customer.setContact(contact);
-        customer.setCity(city);
-        customer.setState(state);
-        customer.setEmailId(emailId);
-        customer.setUsername(username);
-        customerList.add(customer);
-        return customer;
-    }
+//    public Customer createCustomer(
+//         String firstName,
+//         String lastName,
+//         String contact,
+//         String address,
+//         String city,
+//         String state,
+//         String emailId,
+//         String username
+//    ){
+//        
+//        Customer customer = new Customer();
+//        customer.setFirstName(firstName);
+//        customer.setLastName(lastName);
+//        customer.setAddress(address);
+//        customer.setContact(contact);
+//        customer.setCity(city);
+//        customer.setState(state);
+//        customer.setEmailId(emailId);
+//        customer.setUsername(username);
+//        customerList.add(customer);
+//        return customer;
+//    }
+    
+    private Customer customer;
     
     public Customer getCustomer(String firstName){
         for(Customer customer: customerList){
@@ -58,6 +60,12 @@ public class CustomerDirectory {
             }
         }
         return null;
+    }
+    
+    public Customer createCustomer(String username){
+        customer= new Customer(username);
+        customerList.add(customer);
+        return customer;
     }
     
     public void deleteCustomer(String username){

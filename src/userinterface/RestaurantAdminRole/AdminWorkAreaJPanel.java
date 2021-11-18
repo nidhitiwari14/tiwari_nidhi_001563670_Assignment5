@@ -26,7 +26,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.account = account;
         this.business = business;
-        valueLabel.setText(account.getUsername());
+        lblManager.setText(account.getUsername());
     }
     
     /** This method is called from within the constructor to
@@ -42,7 +42,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         manageEmployeeJButton = new javax.swing.JButton();
         manageOrganizationJButton = new javax.swing.JButton();
         enterpriseLabel = new javax.swing.JLabel();
-        valueLabel = new javax.swing.JLabel();
+        lblManager = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -78,31 +78,40 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         enterpriseLabel.setText("Restaurant :");
         add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 120, 30));
 
-        valueLabel.setText("<value>");
-        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 130, -1));
+        lblManager.setText("<value>");
+        add(lblManager, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 130, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed
         // TODO add your handling code here:
-        
+        ManageRestaurantInfo manageInfo=new ManageRestaurantInfo(userProcessContainer,account,business);
+        userProcessContainer.add("Manage Restaurents",manageInfo);
+        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_userJButtonActionPerformed
 
     private void manageEmployeeJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeeJButtonActionPerformed
-
+        ManageRestaurantMenu manageMenu=new ManageRestaurantMenu(userProcessContainer,account,business);
+        userProcessContainer.add("Manage Restaurents",manageMenu);
+        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_manageEmployeeJButtonActionPerformed
 
     private void manageOrganizationJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageOrganizationJButtonActionPerformed
-
+        ManageOrders manageOrder=new ManageOrders(userProcessContainer,account,business);
+        userProcessContainer.add("Manage Restaurents",manageOrder);
+        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_manageOrganizationJButtonActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblManager;
     private javax.swing.JButton manageEmployeeJButton;
     private javax.swing.JButton manageOrganizationJButton;
     private javax.swing.JButton userJButton;
-    private javax.swing.JLabel valueLabel;
     // End of variables declaration//GEN-END:variables
     
 }
