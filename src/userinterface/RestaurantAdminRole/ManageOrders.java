@@ -168,13 +168,13 @@ public class ManageOrders extends javax.swing.JPanel {
 
         tblFeedback.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Customer Name", "Address", "Price", "Comment"
+                "Order Id", "Customer Name", "Address", "Price", "Comment"
             }
         ));
         jScrollPane2.setViewportView(tblFeedback);
@@ -305,12 +305,12 @@ public class ManageOrders extends javax.swing.JPanel {
                    
                for (Customer cust:business.getCustomerDirectory().getCustomerList()) {
                        for(RestaurantOrder order:cust.getOrderList()){
-                        Object[] row = new Object[5];
-//                        row[0] = order;
-                        row[0] = order.getCustomerName();
-                        row[1] = order.getDeliveryAddress();
-                        row[2] = order.getPrice();
-                        row[3] = order.getComment();
+                        Object[] row = new Object[6];
+                        row[0] = order;
+                        row[1] = order.getCustomerName();
+                        row[2] = order.getDeliveryAddress();
+                        row[3] = order.getPrice();
+                        row[4] = order.getComment();
                         model.addRow(row);
                }
             

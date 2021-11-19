@@ -50,7 +50,6 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
 
         Object[] row = new Object[3];
-        //System.out.println();
         for(Restaurant restro:business.getRestaurantDirectory().getRestaurantList()){
              row[0] = restro;
              row[1] = restro.getRestaurantAddress();
