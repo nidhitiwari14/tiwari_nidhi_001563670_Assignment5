@@ -63,13 +63,13 @@ public class ManageOrders extends javax.swing.JPanel {
         for (Restaurant restro:business.getRestaurantDirectory().getRestaurantList()) {
            
             if (restro.getAdminUserName().equals(account.getUsername())) {
-               for(RestaurantOrder menu:restro.getOrderList()){
+               for(RestaurantOrder restor:restro.getOrderList()){
                 Object[] row = new Object[5];
-                row[0] = menu;
-                row[1] = menu.getCustomerName();
-                row[2] = menu.getDeliveryAddress();
-                row[3] = menu.getPrice();
-                row[4] = menu.getStatus();
+                row[0] = restor;
+                row[1] = restor.getCustomerName();
+                row[2] = restor.getDeliveryAddress();
+                row[3] = restor.getPrice();
+                row[4] = restor.getStatus();
                 model.addRow(row);
                }
                 
@@ -284,7 +284,7 @@ public class ManageOrders extends javax.swing.JPanel {
         }
         else{
             RestaurantOrder order  = (RestaurantOrder)ManageOrdersTbl.getValueAt(selectedRow, 0);
-            if(order.getStatus().equals("Assign to Deliveryman")){
+            if(order.getStatus().equals("Assigned to Deliveryman") || order.getStatus().equals("Assign to Deliveryman")){
                 JOptionPane.showMessageDialog(null,"Already Assigned Order");
             }else{
                 DeliveryManAssign viewOrder=new DeliveryManAssign(userProcessContainer,account,order,business);

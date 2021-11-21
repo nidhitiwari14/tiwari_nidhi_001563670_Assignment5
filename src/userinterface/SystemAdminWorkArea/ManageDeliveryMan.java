@@ -221,7 +221,7 @@ public class ManageDeliveryMan extends javax.swing.JPanel {
         int selectedRow = tblManageDeli.getSelectedRow();
         if(selectedRow>=0){
             int selectionButton = JOptionPane.YES_NO_OPTION;
-            int selectionResult = JOptionPane.showConfirmDialog(null, "Are you sure to delete??","Warning",selectionButton);
+            int selectionResult = JOptionPane.showConfirmDialog(null, "Confirm Delete ? ","Warning",selectionButton);
             if(selectionResult == JOptionPane.YES_OPTION){
                 String username= (String) tblManageDeli.getValueAt(selectedRow, 1);
                 String pwd= (String) tblManageDeli.getValueAt(selectedRow, 2);

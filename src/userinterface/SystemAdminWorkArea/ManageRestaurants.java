@@ -344,7 +344,7 @@ public class ManageRestaurants extends javax.swing.JPanel {
         int selectedRow = tblManageRest.getSelectedRow();
         if(selectedRow>=0){
             int selectionButton = JOptionPane.YES_NO_OPTION;
-            int selectionResult = JOptionPane.showConfirmDialog(null, "Are you sure to delete??","Warning",selectionButton);
+            int selectionResult = JOptionPane.showConfirmDialog(null, "Confirm Delete ? ","Warning",selectionButton);
             if(selectionResult == JOptionPane.YES_OPTION){
                 String username= (String) tblManageRest.getValueAt(selectedRow, 1);
                 String pwd= (String) tblManageRest.getValueAt(selectedRow, 2);

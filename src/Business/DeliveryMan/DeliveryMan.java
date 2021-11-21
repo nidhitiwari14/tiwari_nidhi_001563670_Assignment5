@@ -18,42 +18,10 @@ public class DeliveryMan {
     private String firstName;
     private String lastName;
     private String UserName;
-    private int id;
-    private int deliId;
+    private int id = 1001;
+    private int deliId = 101;
     private static int count = 1001;
     private static int deliCount = 101;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getDeliId() {
-        return deliId;
-    }
-
-    public void setDeliId(int deliId) {
-        this.deliId = deliId;
-    }
-
-    public static int getCount() {
-        return count;
-    }
-
-    public static void setCount(int count) {
-        DeliveryMan.count = count;
-    }
-
-    public static int getDeliCount() {
-        return deliCount;
-    }
-
-    public static void setDeliCount(int deliCount) {
-        DeliveryMan.deliCount = deliCount;
-    }
 
     public String getName() {
         return name;
@@ -100,14 +68,12 @@ public class DeliveryMan {
     public DeliveryMan(String UserName){
         this.UserName=UserName;
         orderList = new ArrayList<RestaurantOrder>();
-        deliId = deliCount;
-        deliCount++;
+        deliId++;
     }
     
     public DeliveryMan(){
         orderList = new ArrayList<RestaurantOrder>();
-        deliId = deliCount;
-        deliCount++;
+        deliId++;
     }
      
     public void addOrder(String restaurantName, String customerName, String deliveryMan, ArrayList<RestaurantMenu> Order, Double price, String deliveryAddress) {
@@ -121,8 +87,9 @@ public class DeliveryMan {
         order.setDeliveryAddress(deliveryAddress);
         order.setStatus("New Order");
         orderList.add(order);
-        id = count;
-        count++;
+        id++;
+//        id = count;
+//        count++;
     }
 
     public String getContact() {

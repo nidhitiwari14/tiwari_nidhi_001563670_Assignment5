@@ -64,13 +64,13 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
           for (Customer cust:business.getCustomerDirectory().getCustomerList()) {
            
             if (cust.getUsername().equals(userAccount.getUsername())) {
-               for(RestaurantOrder menu:cust.getOrderList()){
+               for(RestaurantOrder restor:cust.getOrderList()){
                    
                 Object[] row = new Object[4];
-                row[0] = menu;
-                row[1] = menu.getRestaurantName();
-                row[2] = menu.getPrice();
-                row[3] = menu.getComment();
+                row[0] = restor;
+                row[1] = restor.getRestaurantName();
+                row[2] = restor.getPrice();
+                row[3] = restor.getComment();
                 model.addRow(row);
                }
                 

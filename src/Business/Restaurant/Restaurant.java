@@ -21,8 +21,8 @@ public class Restaurant {
     private String restaurantManager;
     private RestaurantMenuDirectory restaurantMenuDirectory; 
     private ArrayList<RestaurantMenu> Menu;
-    private int id;
-    private static int count = 1001;
+    private int id = 1001;
+//    private static int count = 1001;
 
     public ArrayList<RestaurantMenu> getMenu() {
         return Menu;
@@ -127,8 +127,9 @@ public class Restaurant {
         order.setStatus("New Order");
         order.setComment(" ");
         orderList.add(order);
-        id = count;
-        count++;
+        id++;
+//        id = count;
+//        count++;
     }
     
     @Override
