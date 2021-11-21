@@ -69,9 +69,17 @@ public class ManageRestaurantMenu extends javax.swing.JPanel {
         lblRestaurantMenu.setFont(new java.awt.Font("Lucida Grande", 3, 18)); // NOI18N
         lblRestaurantMenu.setText("Manage Restaurant Menu");
 
+        jLabel2.setFont(new java.awt.Font("Lucida Grande", 3, 13)); // NOI18N
         jLabel2.setText("Dish Name");
 
+        jLabel3.setFont(new java.awt.Font("Lucida Grande", 3, 13)); // NOI18N
         jLabel3.setText("Price");
+
+        txtDishPrice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDishPriceActionPerformed(evt);
+            }
+        });
 
         btnSave.setBackground(new java.awt.Color(0, 153, 255));
         btnSave.setFont(new java.awt.Font("Lucida Grande", 3, 13)); // NOI18N
@@ -95,7 +103,7 @@ public class ManageRestaurantMenu extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblMenu);
 
-        btnDelete.setBackground(new java.awt.Color(0, 153, 255));
+        btnDelete.setBackground(new java.awt.Color(255, 0, 51));
         btnDelete.setFont(new java.awt.Font("Lucida Grande", 3, 13)); // NOI18N
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -109,28 +117,28 @@ public class ManageRestaurantMenu extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGap(109, 109, 109)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(109, 109, 109)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnDelete)
-                            .addComponent(btnBack)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(132, 132, 132)
+                        .addComponent(lblRestaurantMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnDelete)
+                    .addComponent(btnBack)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(241, 241, 241)
+                        .addGap(111, 111, 111)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblRestaurantMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel2))
-                                .addGap(50, 50, 50)
+                                .addGap(46, 46, 46)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtDishPrice)
-                                    .addComponent(txtMenuName)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE)))))))
+                                    .addComponent(txtMenuName, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtDishPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(71, 71, 71)
+                                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(122, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -141,16 +149,16 @@ public class ManageRestaurantMenu extends javax.swing.JPanel {
                 .addGap(17, 17, 17)
                 .addComponent(lblRestaurantMenu)
                 .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addComponent(txtMenuName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtMenuName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtDishPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
-                .addComponent(btnSave)
-                .addGap(55, 55, 55)
+                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47)
                 .addComponent(btnDelete)
@@ -219,22 +227,24 @@ public class ManageRestaurantMenu extends javax.swing.JPanel {
         }
         
         try {
-            if(price==null || price==0){
-                throw new NullPointerException("Dish Price cannot be empty or zero");
-
-            } else if (Pattern.matches("^\\d+(,\\d{1,2})?$", name)==false) {
+            if(price==null){
                 
-                throw new Exception("Please enter valid  Name");
+                throw new NullPointerException("Dish Price cannot be empty");
 
+            } else if (price==0) {
+                
+                throw new Exception("Dish Price cannot be zero");
             }
-        } catch(NullPointerException e){
-            JOptionPane.showMessageDialog(null, "Dish Name is Empty");
+            
+        } catch(NullPointerException e) {
+            
+            JOptionPane.showMessageDialog(null, "Dish Price is Empty");
 
             return;
-
-        }catch (Exception e){
             
-            JOptionPane.showMessageDialog(null, "Dish Name is invalid");
+        } catch(Exception e) {
+            
+            JOptionPane.showMessageDialog(null, "Dish Price is zero");
 
             return;
         }
@@ -270,6 +280,10 @@ public class ManageRestaurantMenu extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select a Row!!");
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void txtDishPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDishPriceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDishPriceActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

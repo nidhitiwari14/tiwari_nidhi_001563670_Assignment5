@@ -184,7 +184,7 @@ public class ManageOrders extends javax.swing.JPanel {
         jScrollPane2.setViewportView(tblFeedback);
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 3, 18)); // NOI18N
-        jLabel2.setText("Admin Manage Orders");
+        jLabel2.setText("Admin Role: Manage Orders");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -232,7 +232,7 @@ public class ManageOrders extends javax.swing.JPanel {
                     .addComponent(btnAcceptOrder)
                     .addComponent(btnRejectOrder)
                     .addComponent(btnAssignDeliveryMan))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(btnViewFeedback))

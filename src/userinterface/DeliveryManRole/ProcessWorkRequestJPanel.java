@@ -60,7 +60,7 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
 
         submitJButton.setBackground(new java.awt.Color(0, 153, 255));
         submitJButton.setFont(new java.awt.Font("Lucida Grande", 3, 13)); // NOI18N
-        submitJButton.setText("Submit Result");
+        submitJButton.setText("Submit");
         submitJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitJButtonActionPerformed(evt);
@@ -68,7 +68,7 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
         });
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 3, 13)); // NOI18N
-        jLabel1.setText("Result");
+        jLabel1.setText("Comments:");
 
         resultJTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,15 +93,15 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
                 .addGap(89, 89, 89)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(46, 46, 46)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
                         .addComponent(resultJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(294, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(backJButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 284, Short.MAX_VALUE)
-                        .addComponent(submitJButton)
-                        .addGap(116, 116, 116))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(submitJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(126, 126, 126))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
