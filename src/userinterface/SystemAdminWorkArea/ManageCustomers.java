@@ -270,70 +270,63 @@ public class ManageCustomers extends javax.swing.JPanel {
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
         // TODO add your handling code here:
         String firstName = txtCustomerFirstName.getText();
-        String usernname=txtCustomerUsername.getText();
+        String username=txtCustomerUsername.getText();
         String password=txtCustomerPassword.getText();
-
+        
+        Pattern pattern = Pattern.compile("^[a-zA-Z'\\-\\s]+$");
+              
         try {
-            if(firstName==null || firstName.isEmpty()){
-                throw new NullPointerException(" Name field is Empty");
-
-            }else if(firstName.length()<5 || Pattern.matches("^[A-Za-z]+$", firstName)==false){
-                throw new Exception("Please enter valid First Name");
-
+             if(firstName==null || firstName.isEmpty()){
+                 
+                throw new NullPointerException("Name cannot be empty");
+                
+                
+            } else if (pattern.matcher(firstName).find() == false){
+                
+                throw new Exception("Please enter valid  Name");
+                
             }
         } catch(NullPointerException e){
-            JOptionPane.showMessageDialog(null, "First Name is Empty");
-
+            
+            JOptionPane.showMessageDialog(null, "Name is empty");
+           
             return;
-
-        }catch (Exception e){
-            JOptionPane.showMessageDialog(null, "First  Name is invalid");
-
+            
+        } catch (Exception e){
+            
+            JOptionPane.showMessageDialog(null, "Name is invalid");
+       
             return;
         }
-
+        
         try {
-            if(usernname==null || usernname.isEmpty()){
-                throw new NullPointerException("User Name field is Empty");
-
-            }else if(usernname.length()<5){
+             if(username==null || username.isEmpty()){
+                 
+                throw new NullPointerException("User Name cannot be empty");
+                
+                
+            } else if (username.length()<3){
                 throw new Exception("Please enter valid User Name");
-
+                
             }
         } catch(NullPointerException e){
+            
             JOptionPane.showMessageDialog(null, "User Name is Empty");
-
+           
             return;
-
-        }catch (Exception e){
-            JOptionPane.showMessageDialog(null, " User Name is invalid");
-
+            
+        } catch (Exception e){
+            
+            JOptionPane.showMessageDialog(null, "User Name is invalid");
+       
             return;
         }
 
-        try {
-
-            if(password==null || password.isEmpty()){
-                throw new NullPointerException("Pwd field is Empty");
-            }else if(Pattern.matches("^(?=(.*[a-z]){1,})(?=(.*[\\d]){1,})(?=(.*[\\W]){1,})(?!.*\\s).{5,30}$", password)==false){
-                throw new Exception("Invalid Password");
-            }
-
-        }  catch(NullPointerException e){
-            JOptionPane.showMessageDialog(null, "Password is Empty");
-
-            return;
-        }catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Password is of invalid pattern");
-
-            return;
-        } 
-
-        if (business.getUserAccountDirectory().checkIfUsernameIsUnique(usernname)==false) {
+        if (business.getUserAccountDirectory().checkIfUsernameIsUnique(username)==false) {
             JOptionPane.showMessageDialog(null,"  User Name already exists ");
         }   else   {
 
-            business.getUserAccountDirectory().updateUserAccount(user,firstName,usernname,password);
+            business.getUserAccountDirectory().updateUserAccount(user,firstName,username,password);
             populateManageCustomerTable();
             btnSubmit.setEnabled(true);
             btnDelete.setEnabled(true);
@@ -352,57 +345,52 @@ public class ManageCustomers extends javax.swing.JPanel {
         String password=txtCustomerPassword.getText();
         String username=txtCustomerUsername.getText();
         
-
+        Pattern pattern = Pattern.compile("^[a-zA-Z'\\-\\s]+$");
+              
         try {
-            if(name==null || name.isEmpty()){
-                throw new NullPointerException(" Name field is Empty");
-
-            }else if(Pattern.matches("^[A-Za-z]+$", name)==false){
+             if(name==null || name.isEmpty()){
+                 
+                throw new NullPointerException("Name cannot be empty");
+                
+                
+            } else if (pattern.matcher(name).find() == false){
+                
                 throw new Exception("Please enter valid  Name");
-
+                
             }
         } catch(NullPointerException e){
-            JOptionPane.showMessageDialog(null, "Name is Empty");
-
+            
+            JOptionPane.showMessageDialog(null, "Name is empty");
+           
             return;
-
+            
         } catch (Exception e){
+            
             JOptionPane.showMessageDialog(null, "Name is invalid");
-
+       
             return;
         }
-
+        
         try {
-            if(username==null || username.isEmpty()){
-                throw new NullPointerException("User Name field is Empty");
-
+             if(username==null || username.isEmpty()){
+                 
+                throw new NullPointerException("User Name cannot be empty");
+                
+                
+            } else if (username.length()<3){
+                throw new Exception("Please enter valid User Name");
+                
             }
         } catch(NullPointerException e){
+            
             JOptionPane.showMessageDialog(null, "User Name is Empty");
-
+           
             return;
-
+            
         } catch (Exception e){
-            JOptionPane.showMessageDialog(null, " User Name is invalid");
-
-            return;
-        }
-
-        try {
-
-            if(password==null || password.isEmpty()){
-                throw new NullPointerException("Pwd field is Empty");
-            }else if(Pattern.matches("^(?=(.*[a-z]){1,})(?=(.*[\\d]){1,})(?=(.*[\\W]){1,})(?!.*\\s).{5,30}$", password)==false){
-                throw new Exception("Invalid Password");
-            }
-
-        }  catch(NullPointerException e){
-            JOptionPane.showMessageDialog(null, "Password is Empty");
-
-            return;
-        }catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Password is of invalid pattern");
-
+            
+            JOptionPane.showMessageDialog(null, "User Name is invalid");
+       
             return;
         }
 

@@ -88,4 +88,12 @@ public class RestaurantDirectory {
             }
         }
     }
+    
+    public void deleteRestaurant(){
+        for(int i=0;i<restaurantList.size();i++){
+            restaurantList.remove(i);
+        }
+    }
+    
+    
 }

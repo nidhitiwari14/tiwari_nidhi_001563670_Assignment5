@@ -188,22 +188,50 @@ public class ManageRestaurantMenu extends javax.swing.JPanel {
         // TODO add your handling code here:
         String name=txtMenuName.getText();
         Double price=Double.parseDouble(txtDishPrice.getText());
-
+        
+        Pattern pattern = Pattern.compile("^[a-zA-Z'\\-\\s]+$");
+              
         try {
-            if(name==null || name.isEmpty()){
-                throw new NullPointerException(" Name field is Empty");
+             if(name==null || name.isEmpty()){
+                 
+                throw new NullPointerException("Dish Name cannot be empty");
+                
+                
+            } else if (pattern.matcher(name).find() == false){
+                
+                throw new Exception("Please enter valid Dish Name");
+                
+            }
+        } catch(NullPointerException e){
+            
+            JOptionPane.showMessageDialog(null, "Dish Name is empty");
+           
+            return;
+            
+        } catch (Exception e){
+            
+            JOptionPane.showMessageDialog(null, "Dish Name is invalid");
+       
+            return;
+        }
+        
+        try {
+            if(price==null || price==0){
+                throw new NullPointerException("Dish Price cannot be empty or zero");
 
-            }else if(name.length()<5 ){
+            } else if (Pattern.matches("^\\d+(,\\d{1,2})?$", name)==false) {
+                
                 throw new Exception("Please enter valid  Name");
 
             }
         } catch(NullPointerException e){
-            JOptionPane.showMessageDialog(null, " Name is Empty");
+            JOptionPane.showMessageDialog(null, "Dish Name is Empty");
 
             return;
 
         }catch (Exception e){
-            JOptionPane.showMessageDialog(null, "  Name is invalid");
+            
+            JOptionPane.showMessageDialog(null, "Dish Name is invalid");
 
             return;
         }

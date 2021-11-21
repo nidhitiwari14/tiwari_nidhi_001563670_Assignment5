@@ -176,21 +176,25 @@ public class ManageRestaurantInfo extends javax.swing.JPanel {
         String address=txtRestaurantAddress.getText();
 
         try {
-            if(name==null || name.isEmpty()){
-                throw new NullPointerException(" Name field is Empty");
-
-            }else if(name.length()<5 ){
+             if(name==null || name.isEmpty()){
+                 
+                throw new NullPointerException("Name cannot be empty");
+                
+                
+            } else if (Pattern.matches("^[A-Za-z'-]+$", name)==false){
                 throw new Exception("Please enter valid  Name");
-
+                
             }
         } catch(NullPointerException e){
-            JOptionPane.showMessageDialog(null, " Name is Empty");
-
+            
+            JOptionPane.showMessageDialog(null, "Name is empty");
+           
             return;
-
-        }catch (Exception e){
-            JOptionPane.showMessageDialog(null, "  Name is invalid");
-
+            
+        } catch (Exception e){
+            
+            JOptionPane.showMessageDialog(null, "Name is invalid");
+       
             return;
         }
 

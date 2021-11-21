@@ -164,37 +164,40 @@ public class ManageRestaurants extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(btnBack)
-                        .addGap(146, 146, 146)
-                        .addComponent(lblManageCustomerTitle))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(154, 154, 154)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblRestaurantUsername)
-                            .addComponent(lblRestaurantName)
-                            .addComponent(lblRestaurantPassword)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnSubmit)
-                            .addComponent(txtRestaurantName, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
-                            .addComponent(txtRestaurantUserName)
-                            .addComponent(txtRestaurantPassword)
-                            .addComponent(txtRestaurantAddress)
-                            .addComponent(txtRestaurantContact)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addComponent(btnBack)
+                                .addGap(146, 146, 146)
+                                .addComponent(lblManageCustomerTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(154, 154, 154)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblRestaurantUsername)
+                                    .addComponent(lblRestaurantName)
+                                    .addComponent(lblRestaurantPassword)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnSubmit)
+                                    .addComponent(txtRestaurantName, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+                                    .addComponent(txtRestaurantUserName)
+                                    .addComponent(txtRestaurantPassword)
+                                    .addComponent(txtRestaurantAddress)
+                                    .addComponent(txtRestaurantContact)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(92, 92, 92)
                                 .addComponent(btnUpdate)
                                 .addGap(33, 33, 33)
                                 .addComponent(btnConfirm)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnDelete))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(104, Short.MAX_VALUE))
+                                .addGap(185, 185, 185)
+                                .addComponent(btnDelete)))
+                        .addGap(0, 98, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 672, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -269,59 +272,52 @@ public class ManageRestaurants extends javax.swing.JPanel {
         String username=txtRestaurantUserName.getText();
         String password=txtRestaurantPassword.getText();
 
+        Pattern pattern = Pattern.compile("^[a-zA-Z'\\-\\s]+$");
+              
         try {
-            if(name==null || name.isEmpty()){
-                throw new NullPointerException(" Name field is Empty");
-
-            }else if(name.length()<5 || Pattern.matches("^[A-Za-z]+$", name)==false){
+             if(name==null || name.isEmpty()){
+                 
+                throw new NullPointerException("Name cannot be empty");
+                
+                
+            } else if (pattern.matcher(name).find() == false){
+                
                 throw new Exception("Please enter valid  Name");
-
+                
             }
         } catch(NullPointerException e){
-            JOptionPane.showMessageDialog(null, " Name is Empty");
-
+            
+            JOptionPane.showMessageDialog(null, "Name is empty");
+           
             return;
-
-        }catch (Exception e){
-            JOptionPane.showMessageDialog(null, "  Name is invalid");
-
+            
+        } catch (Exception e){
+            
+            JOptionPane.showMessageDialog(null, "Name is invalid");
+       
             return;
         }
-
+        
         try {
-            if(username==null || username.isEmpty()){
-                throw new NullPointerException("User Name field is Empty");
-
-            }else if(username.length()<5){
+             if(username==null || username.isEmpty()){
+                 
+                throw new NullPointerException("User Name cannot be empty");
+                
+                
+            } else if (username.length()<3){
                 throw new Exception("Please enter valid User Name");
-
+                
             }
         } catch(NullPointerException e){
+            
             JOptionPane.showMessageDialog(null, "User Name is Empty");
-
+           
             return;
-
+            
         }catch (Exception e){
-            JOptionPane.showMessageDialog(null, " User Name is invalid");
-
-            return;
-        }
-
-        try {
-
-            if(password==null || password.isEmpty()){
-                throw new NullPointerException("Pwd field is Empty");
-            }else if(Pattern.matches("^(?=(.*[a-z]){1,})(?=(.*[\\d]){1,})(?=(.*[\\W]){1,})(?!.*\\s).{5,30}$", password)==false){
-                throw new Exception("Invalid Password");
-            }
-
-        }  catch(NullPointerException e){
-            JOptionPane.showMessageDialog(null, "Password is Empty");
-
-            return;
-        }catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Password is of invalid pattern");
-
+            
+            JOptionPane.showMessageDialog(null, "User Name is invalid");
+       
             return;
         }
 
@@ -354,7 +350,8 @@ public class ManageRestaurants extends javax.swing.JPanel {
 
                 business.getUserAccountDirectory().deleteUserAccount(user);
                 business.getCustomerDirectory().deleteCustomer(user.getUsername());
-
+                business.getRestaurantDirectory().deleteRestaurant();
+                business.getRestaurantDirectory().deleteRestaurant(username);
             }
         }else{
             JOptionPane.showMessageDialog(null, "Please select a Row to delete!");
@@ -378,22 +375,27 @@ public class ManageRestaurants extends javax.swing.JPanel {
         String password=txtRestaurantPassword.getText();
         String address=txtRestaurantAddress.getText();
         String contact=txtRestaurantContact.getText();
+        Pattern pattern = Pattern.compile("^[a-zA-Z'\\-\\s]+$");
               
         try {
              if(name==null || name.isEmpty()){
-                throw new NullPointerException(" Name field is Empty");
+                 
+                throw new NullPointerException("Name cannot be empty");
                 
                 
-            }else if(Pattern.matches("^[A-Za-z]+$", name)==false){
+            } else if (pattern.matcher(name).find() == false){
+                
                 throw new Exception("Please enter valid  Name");
                 
             }
         } catch(NullPointerException e){
-            JOptionPane.showMessageDialog(null, "Name is Empty");
+            
+            JOptionPane.showMessageDialog(null, "Name is empty");
            
             return;
             
-        }catch (Exception e){
+        } catch (Exception e){
+            
             JOptionPane.showMessageDialog(null, "Name is invalid");
        
             return;
@@ -401,20 +403,23 @@ public class ManageRestaurants extends javax.swing.JPanel {
         
         try {
              if(username==null || username.isEmpty()){
-                throw new NullPointerException("User Name field is Empty");
+                 
+                throw new NullPointerException("User Name cannot be empty");
                 
                 
-            }else if(username.length()<5){
+            } else if (username.length()<3){
                 throw new Exception("Please enter valid User Name");
                 
             }
         } catch(NullPointerException e){
+            
             JOptionPane.showMessageDialog(null, "User Name is Empty");
            
             return;
             
         }catch (Exception e){
-            JOptionPane.showMessageDialog(null, " User Name is invalid");
+            
+            JOptionPane.showMessageDialog(null, "User Name is invalid");
        
             return;
         }
@@ -422,26 +427,29 @@ public class ManageRestaurants extends javax.swing.JPanel {
          try {
              
             if(password==null || password.isEmpty()){
-                throw new NullPointerException("Pwd field is Empty");
-            }else if(Pattern.matches("^(?=(.*[a-z]){1,})(?=(.*[\\d]){1,})(?=(.*[\\W]){1,})(?!.*\\s).{5,30}$", password)==false){
+                
+                throw new NullPointerException("Password cannot be empty");
+                
+            } else if (Pattern.matches("^(?=(.*[a-z]){1,})(?=(.*[\\d]){1,})(?=(.*[\\W]){1,})(?!.*\\s).{5,30}$", password)==false){
+                
                 throw new Exception("Invalid Password");
             }
             
             
         }  catch(NullPointerException e){
-             JOptionPane.showMessageDialog(null, "Password is Empty");
             
+             JOptionPane.showMessageDialog(null, "Password is Empty");
              
              return;
-        }catch (Exception e) {
-             JOptionPane.showMessageDialog(null, "Password is of invalid pattern");
-             
-             
+        } catch (Exception e) {
+            
+             JOptionPane.showMessageDialog(null, "Password is invalid");
+ 
              return;
         }
            
         if (business.getUserAccountDirectory().checkIfUsernameIsUnique(username)==false) {
-            JOptionPane.showMessageDialog(null,"  User Name already exists ");
+            JOptionPane.showMessageDialog(null,"User Name already exists ");
         }else{
             
         UserAccount ua1 =business.getUserAccountDirectory().createUserAccount(name,username,password,null, new AdminRole());

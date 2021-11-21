@@ -5,6 +5,7 @@
  */
 package Business.DeliveryMan;
 
+import RestaurantOrder.RestaurantOrder;
 import java.util.ArrayList;
 
 /**
@@ -13,6 +14,14 @@ import java.util.ArrayList;
  */
 public class DeliveryManDirectory {
     private ArrayList<DeliveryMan> deliveryManList;
+
+    public DeliveryMan getDeliveryMan() {
+        return deliveryMan;
+    }
+
+    public void setDeliveryMan(DeliveryMan deliveryMan) {
+        this.deliveryMan = deliveryMan;
+    }
     
     public DeliveryManDirectory(){
         deliveryManList = new ArrayList<DeliveryMan>();
@@ -73,8 +82,7 @@ public class DeliveryManDirectory {
         }
         return null;
     }
-    
-        
+         
     public void deleteDeliveryMan(String username){
          for(int i=0;i<deliveryManList.size();i++){
             if(deliveryManList.get(i).getUserName().equals(username)){
