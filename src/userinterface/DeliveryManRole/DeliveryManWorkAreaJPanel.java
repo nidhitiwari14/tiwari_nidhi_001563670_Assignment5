@@ -119,22 +119,28 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 58, 470, 96));
 
+        assignJButton.setBackground(new java.awt.Color(0, 153, 255));
+        assignJButton.setFont(new java.awt.Font("Lucida Grande", 3, 13)); // NOI18N
         assignJButton.setText("Assign to me");
         assignJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 assignJButtonActionPerformed(evt);
             }
         });
-        add(assignJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(131, 215, -1, -1));
+        add(assignJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, -1, -1));
 
+        processJButton.setBackground(new java.awt.Color(0, 153, 255));
+        processJButton.setFont(new java.awt.Font("Lucida Grande", 3, 13)); // NOI18N
         processJButton.setText("Process");
         processJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 processJButtonActionPerformed(evt);
             }
         });
-        add(processJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(446, 215, -1, -1));
+        add(processJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, -1, -1));
 
+        refreshJButton.setBackground(new java.awt.Color(0, 153, 255));
+        refreshJButton.setFont(new java.awt.Font("Lucida Grande", 3, 13)); // NOI18N
         refreshJButton.setText("Refresh");
         refreshJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

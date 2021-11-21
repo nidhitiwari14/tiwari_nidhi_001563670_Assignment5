@@ -30,9 +30,9 @@ public class ManageRestaurantInfo extends javax.swing.JPanel {
         this.account=account;
         this.business=business;
         this.userProcessContainer=userProcessContainer;
-//        txtRestaurantName.setEnabled(false);
-//        txtRestaurantContact.setEnabled(false);
-//        txtRestaurantAddress.setEnabled(false);
+        txtRestaurantName.setEnabled(false);
+        txtRestaurantContact.setEnabled(false);
+        txtRestaurantAddress.setEnabled(false);
         btnSave.setEnabled(false);
         btnUpdate.setEnabled(true);
         
@@ -68,6 +68,8 @@ public class ManageRestaurantInfo extends javax.swing.JPanel {
 
         jLabel4.setText("Restaurant Address");
 
+        btnUpdate.setBackground(new java.awt.Color(0, 153, 255));
+        btnUpdate.setFont(new java.awt.Font("Lucida Grande", 3, 13)); // NOI18N
         btnUpdate.setText("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,6 +77,8 @@ public class ManageRestaurantInfo extends javax.swing.JPanel {
             }
         });
 
+        btnSave.setBackground(new java.awt.Color(0, 153, 255));
+        btnSave.setFont(new java.awt.Font("Lucida Grande", 3, 13)); // NOI18N
         btnSave.setText("Save");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,6 +86,8 @@ public class ManageRestaurantInfo extends javax.swing.JPanel {
             }
         });
 
+        btnBack.setBackground(new java.awt.Color(0, 153, 255));
+        btnBack.setFont(new java.awt.Font("Lucida Grande", 3, 13)); // NOI18N
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,28 +102,27 @@ public class ManageRestaurantInfo extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(196, 196, 196)
+                        .addComponent(btnSave)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnUpdate))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(188, 188, 188)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel2)
                             .addComponent(jLabel4))
                         .addGap(50, 50, 50)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtRestaurantName)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtRestaurantName, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
                             .addComponent(txtRestaurantContact)
-                            .addComponent(txtRestaurantAddress, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)))
+                            .addComponent(txtRestaurantAddress)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addComponent(btnBack)
                         .addGap(108, 108, 108)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(196, 196, 196)
-                        .addComponent(btnSave)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnUpdate)
-                        .addGap(79, 79, 79)))
-                .addContainerGap(167, Short.MAX_VALUE))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,14 +179,17 @@ public class ManageRestaurantInfo extends javax.swing.JPanel {
         String name=txtRestaurantName.getText();
         String number=txtRestaurantContact.getText();
         String address=txtRestaurantAddress.getText();
-
+        
+        Pattern pattern = Pattern.compile("^[a-zA-Z'\\-\\s]+$");
+              
         try {
              if(name==null || name.isEmpty()){
                  
                 throw new NullPointerException("Name cannot be empty");
                 
                 
-            } else if (Pattern.matches("^[A-Za-z'-]+$", name)==false){
+            } else if (pattern.matcher(name).find() == false){
+                
                 throw new Exception("Please enter valid  Name");
                 
             }
@@ -241,15 +249,6 @@ public class ManageRestaurantInfo extends javax.swing.JPanel {
             }
 
         }
-
-        //System.out.println(system.getRestaurantDirectory().getRestaurantList().get(0).getName());
-
-        //system.getRestaurantDirectory().getRestaurantList().updateRestaurantInfo(name, number, address);
-//        txtRestaurantName.setEnabled(false);
-//        txtRestaurantContact.setEnabled(false);
-//        txtRestaurantAddress.setEnabled(false);
-//        btnSave.setEnabled(false);
-//        btnUpdate.setEnabled(true);
 
     }//GEN-LAST:event_btnSaveActionPerformed
 

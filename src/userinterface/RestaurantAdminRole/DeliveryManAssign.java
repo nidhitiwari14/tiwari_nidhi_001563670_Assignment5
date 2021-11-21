@@ -72,6 +72,8 @@ public class DeliveryManAssign extends javax.swing.JPanel {
         lblAssignDeliveryMan.setFont(new java.awt.Font("Lucida Grande", 3, 18)); // NOI18N
         lblAssignDeliveryMan.setText("Delivery Man Assignation");
 
+        btnAssignOrder.setBackground(new java.awt.Color(0, 153, 255));
+        btnAssignOrder.setFont(new java.awt.Font("Lucida Grande", 3, 13)); // NOI18N
         btnAssignOrder.setText("Assign Order");
         btnAssignOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,6 +94,8 @@ public class DeliveryManAssign extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblDeliveryManAssign);
 
+        btnBack.setBackground(new java.awt.Color(0, 153, 255));
+        btnBack.setFont(new java.awt.Font("Lucida Grande", 3, 13)); // NOI18N
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,15 +113,16 @@ public class DeliveryManAssign extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(97, 97, 97)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblAssignDeliveryMan)
-                        .addGap(40, 40, 40)
-                        .addComponent(jLabel1))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBack)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(130, 130, 130)
-                        .addComponent(btnAssignOrder)))
+                        .addComponent(btnAssignOrder))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(lblAssignDeliveryMan)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel1))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(168, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
