@@ -77,6 +77,12 @@ public class CustomerDirectory {
         return cust;
     }
     
+    public void updateCustomer(Customer cust,String name,String username){
+       
+        cust.setFirstName(name);
+        cust.setUsername(username);
+    }
+    
     public void deleteCustomer(String username){
         for(int i=0;i<customerList.size();i++){
             if(customerList.get(i).getUsername().equals(username)){

@@ -322,11 +322,7 @@ public class ManageRestaurants extends javax.swing.JPanel {
        
             return;
         }
-
-        if (business.getUserAccountDirectory().checkIfUsernameIsUnique(username)==false) {
-            JOptionPane.showMessageDialog(null,"  User Name already exists ");
-        }else{
-
+        
             business.getUserAccountDirectory().updateUserAccount(user,name,username,password);
             populateManageRestaurantTable();
             btnSubmit.setEnabled(true);
@@ -336,7 +332,6 @@ public class ManageRestaurants extends javax.swing.JPanel {
             txtRestaurantName.setText("");
             txtRestaurantUserName.setText("");
             txtRestaurantPassword.setText("");
-        }
     }//GEN-LAST:event_btnConfirmActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
@@ -355,7 +350,7 @@ public class ManageRestaurants extends javax.swing.JPanel {
                 business.getRestaurantDirectory().deleteRestaurant();
                 business.getRestaurantDirectory().deleteRestaurant(username);
             }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Please select a Row to delete!");
         }
         populateManageRestaurantTable();

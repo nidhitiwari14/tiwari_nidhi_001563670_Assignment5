@@ -330,11 +330,8 @@ public class ManageCustomers extends javax.swing.JPanel {
             return;
         }
 
-        if (business.getUserAccountDirectory().checkIfUsernameIsUnique(username)==false) {
-            JOptionPane.showMessageDialog(null,"  User Name already exists ");
-        }   else   {
-
             business.getUserAccountDirectory().updateUserAccount(user,firstName,username,password);
+//          business.getCustomerDirectory().updateCustomer(cust,firstName,username);
             populateManageCustomerTable();
             btnSubmit.setEnabled(true);
             btnDelete.setEnabled(true);
@@ -344,7 +341,6 @@ public class ManageCustomers extends javax.swing.JPanel {
             txtCustomerFirstName.setText("");
             txtCustomerUsername.setText("");
             txtCustomerPassword.setText("");
-        }
     }//GEN-LAST:event_btnConfirmActionPerformed
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
@@ -403,8 +399,8 @@ public class ManageCustomers extends javax.swing.JPanel {
         }
 
         if (business.getUserAccountDirectory().checkIfUsernameIsUnique(username)==false) {
-            JOptionPane.showMessageDialog(null,"  User Name already exists ");
-        }else{
+            JOptionPane.showMessageDialog(null,"User Name already exists ");
+        } else {
 
             UserAccount ua1 =business.getUserAccountDirectory().createUserAccount(name,username,password, null, new CustomerRole());
             Customer cust= business.getCustomerDirectory().createCustomer(name,username);

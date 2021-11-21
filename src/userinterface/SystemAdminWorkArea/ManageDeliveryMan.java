@@ -392,10 +392,6 @@ public class ManageDeliveryMan extends javax.swing.JPanel {
        
             return;
         }
-        
-        if (business.getUserAccountDirectory().checkIfUsernameIsUnique(username)==false) {
-            JOptionPane.showMessageDialog(null,"  User Name already exists ");
-        }else{
 
             business.getUserAccountDirectory().updateUserAccount(user,name,username,password);
             populateManageDeliveryManTable();
@@ -406,7 +402,6 @@ public class ManageDeliveryMan extends javax.swing.JPanel {
             txtDeliveryManName.setText("");
             txtDeliveryManUserName.setText("");
             txtDeliveryManPassword.setText("");
-        }
     }//GEN-LAST:event_btnConfirmActionPerformed
 
 
