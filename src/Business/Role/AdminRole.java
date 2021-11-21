@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author nidhi
+ * @author nidhitiwari
  */
 public class AdminRole extends Role{
 

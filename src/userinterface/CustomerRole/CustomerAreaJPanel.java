@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author raunak
+ * @author nidhitiwari
  */
 public class CustomerAreaJPanel extends javax.swing.JPanel {
 
@@ -28,7 +28,7 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
    
     EcoSystem business;
     /**
-     * Creates new form DoctorWorkAreaJPanel
+     * Creates new CustomerAreaJPanel
      */
     public CustomerAreaJPanel(JPanel userProcessContainer, UserAccount userAccount,EcoSystem business) {
         initComponents();
@@ -64,7 +64,6 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
           for (Customer cust:business.getCustomerDirectory().getCustomerList()) {
            
             if (cust.getUsername().equals(userAccount.getUsername())) {
-               // System.out.println(restro.getOrderList());
                for(RestaurantOrder menu:cust.getOrderList()){
                    
                 Object[] row = new Object[4];
@@ -271,14 +270,12 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
         if(selectedRow<0){
             JOptionPane.showMessageDialog(null,"Please select a row from the table to view details","Warning",JOptionPane.WARNING_MESSAGE);
         }
-        else{
+        else {
            Restaurant restaurant = (Restaurant)tblRestaurantDetails.getValueAt(selectedRow, 0);
-            
-            
             PlaceOrder manageMenu=new PlaceOrder(userProcessContainer,userAccount,business,restaurant);
             userProcessContainer.add("Manage Restaurents",manageMenu);
             CardLayout layout=(CardLayout)userProcessContainer.getLayout();
-                layout.next(userProcessContainer);
+            layout.next(userProcessContainer);
         }
         
         

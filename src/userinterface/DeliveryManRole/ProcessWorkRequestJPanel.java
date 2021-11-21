@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author nidhi
+ * @author nidhitiwari
  */
 
 

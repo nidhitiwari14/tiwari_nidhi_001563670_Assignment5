@@ -54,16 +54,6 @@ public class ManageOrders extends javax.swing.JPanel {
 //      populateDeliveryMan();
     }
     
-//    public void populateDeliveryMan(){
-//     
-//        comboBoxDeliveryMan.removeAllItems();
-//        comboBoxDeliveryMan.addItem(" ");
-//        for(DeliveryMan deliveryMan: business.getDeliveryManDirectory().getDeliveryManList()){
-//            comboBoxDeliveryMan.addItem(deliveryMan.getFirstName());
-//        
-//        }
-//    }
-    
     private void populateTable() {
         DefaultTableModel model = (DefaultTableModel) ManageOrdersTbl.getModel();
         
@@ -338,28 +328,6 @@ public class ManageOrders extends javax.swing.JPanel {
         }
             }
         }
-                     
-//        for (Restaurant restro:business.getRestaurantDirectory().getRestaurantList()) {
-//            
-//           for (Customer customer:business.getCustomerDirectory().getCustomerList()) {
-//             if (restro.getAdminUserName().equals(account.getUsername())) {
-//               for(RestaurantOrder menu:customer.getOrderList()){
-//                   if (customer.getFirstName().equals(menu.getCustomerName())) {
-//                       Object[] row = new Object[5];
-//                        row[0] = menu;
-//                        row[1] = menu.getCustomerName();
-//                        row[2] = menu.getDeliveryAddress();
-//                        row[3] = menu.getPrice();
-//                        row[4] = menu.getComment();
-//                        model.addRow(row);
-//                       
-//                   }
-//               }
-//                
-//            }
-//           }
-//            
-//        }
     }//GEN-LAST:event_btnViewFeedbackActionPerformed
 
 
