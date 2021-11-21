@@ -23,7 +23,41 @@ public class Customer {
     private String emailId;
     private String username;
     private int id;
+    private int custId;
     private static int count = 1001;
+    private static int custCount = 101;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getCustId() {
+        return custId;
+    }
+
+    public void setCustId(int custId) {
+        this.custId = custId;
+    }
+
+    public static int getCount() {
+        return count;
+    }
+
+    public static void setCount(int count) {
+        Customer.count = count;
+    }
+
+    public static int getCustCount() {
+        return custCount;
+    }
+
+    public static void setCustCount(int custCount) {
+        Customer.custCount = custCount;
+    }
     private ArrayList<RestaurantOrder> orderList;
 
     public String getFirstName() {
@@ -101,28 +135,29 @@ public class Customer {
     public Customer(String username){
         this.username=username;
         orderList=new ArrayList<RestaurantOrder>();
-        id = count;
-        count++;
+        custId = custCount;
+        custCount++;
     }
     
     public Customer(){
         orderList = new ArrayList<RestaurantOrder>();
-        id = count;
-        count++;
+        custId = custCount;
+        custCount++;
     }
     
-    public void addOrder(String restaurentName, String customerName, String deliveryMan, ArrayList<RestaurantMenu> Order, Double price, String deliveryAddress) {
+    public void addOrder(String restaurantName, String customerName, String deliveryMan, ArrayList<RestaurantMenu> Order, Double price, String deliveryAddress) {
         RestaurantOrder order=new RestaurantOrder();
         order.setOrderID(String.valueOf(id));
         order.setCustomerName(customerName);
-        order.setRestaurentName(restaurentName);
+        order.setRestaurantName(restaurantName);
         order.setDeliveryMan(deliveryMan);
         order.setRestaurantOrder(Order);
         order.setPrice(price);
         order.setDeliveryAddress(deliveryAddress);
         order.setStatus("New Order");
         orderList.add(order);
-        id++;
+        id = count;
+        count++;
     }
     
     

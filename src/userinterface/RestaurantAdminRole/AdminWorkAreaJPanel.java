@@ -85,21 +85,21 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed
         // TODO add your handling code here:
         ManageRestaurantInfo manageInfo=new ManageRestaurantInfo(userProcessContainer,account,business);
-        userProcessContainer.add("Manage Restaurents",manageInfo);
+        userProcessContainer.add("Manage Restaurants",manageInfo);
         CardLayout layout=(CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_userJButtonActionPerformed
 
     private void manageEmployeeJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeeJButtonActionPerformed
         ManageRestaurantMenu manageMenu=new ManageRestaurantMenu(userProcessContainer,account,business);
-        userProcessContainer.add("Manage Restaurents",manageMenu);
+        userProcessContainer.add("Manage Restaurants",manageMenu);
         CardLayout layout=(CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_manageEmployeeJButtonActionPerformed
 
     private void manageOrganizationJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageOrganizationJButtonActionPerformed
         ManageOrders manageOrder=new ManageOrders(userProcessContainer,account,business);
-        userProcessContainer.add("Manage Restaurents",manageOrder);
+        userProcessContainer.add("Manage Restaurants",manageOrder);
         CardLayout layout=(CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_manageOrganizationJButtonActionPerformed

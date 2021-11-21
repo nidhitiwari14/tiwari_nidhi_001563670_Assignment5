@@ -21,6 +21,8 @@ public class Restaurant {
     private String restaurantManager;
     private RestaurantMenuDirectory restaurantMenuDirectory; 
     private ArrayList<RestaurantMenu> Menu;
+    private int id;
+    private static int count = 1001;
 
     public ArrayList<RestaurantMenu> getMenu() {
         return Menu;
@@ -113,13 +115,11 @@ public class Restaurant {
         Menu.remove(menu);
     }
     
-    int id=1001;
-    
-    public void addOrder(String restaurentName, String customerName, String deliveryMan, ArrayList<RestaurantMenu> Order, Double price, String deliveryAddress) {
+    public void addOrder(String restaurantName, String customerName, String deliveryMan, ArrayList<RestaurantMenu> Order, Double price, String deliveryAddress) {
         RestaurantOrder order=new RestaurantOrder();
         order.setOrderID(String.valueOf(id));
         order.setCustomerName(customerName);
-        order.setRestaurentName(restaurentName);
+        order.setRestaurantName(restaurantName);
         order.setDeliveryMan(deliveryMan);
         order.setRestaurantOrder(Order);
         order.setPrice(price);
@@ -127,8 +127,8 @@ public class Restaurant {
         order.setStatus("New Order");
         order.setComment(" ");
         orderList.add(order);
-        
-        id++;
+        id = count;
+        count++;
     }
     
     @Override

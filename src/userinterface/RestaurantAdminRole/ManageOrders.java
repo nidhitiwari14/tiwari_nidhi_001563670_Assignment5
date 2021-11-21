@@ -192,26 +192,29 @@ public class ManageOrders extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnBack)
-                        .addGap(187, 187, 187)
-                        .addComponent(jLabel2))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnRefresh)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 744, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(btnAcceptOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btnRejectOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(btnAssignDeliveryMan, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnBack)
+                            .addGap(187, 187, 187)
+                            .addComponent(jLabel2))
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btnViewFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(btnRefresh, javax.swing.GroupLayout.Alignment.TRAILING)))
-                .addContainerGap(29, Short.MAX_VALUE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(btnAcceptOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btnRejectOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(btnAssignDeliveryMan, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btnViewFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(261, 261, 261))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 835, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2)))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -232,13 +235,13 @@ public class ManageOrders extends javax.swing.JPanel {
                     .addComponent(btnAcceptOrder)
                     .addComponent(btnRejectOrder)
                     .addComponent(btnAssignDeliveryMan))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(btnViewFeedback))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(16, 16, 16))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -310,22 +313,25 @@ public class ManageOrders extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblFeedback.getModel();
         model.setRowCount(0);
         
-        for (Restaurant rest:business.getRestaurantDirectory().getRestaurantList()) {
-           
-            if (rest.getAdminUserName().equals(account.getUsername())) {
-                   
+         for (Restaurant restr:business.getRestaurantDirectory().getRestaurantList()) {
+            if (restr.getAdminUserName().equals(account.getUsername())) {
+               for(RestaurantOrder order1:restr.getOrderList()){ 
                for (Customer cust:business.getCustomerDirectory().getCustomerList()) {
-                       for(RestaurantOrder order:cust.getOrderList()){
-                        Object[] row = new Object[6];
-                        row[0] = order;
-                        row[1] = order.getCustomerName();
-                        row[2] = order.getDeliveryAddress();
-                        row[3] = order.getPrice();
-                        row[4] = order.getComment();
+                    if (cust.getFirstName().equals(order1.getCustomerName())) {
+                       for(RestaurantOrder order2:cust.getOrderList()){
+                        Object[] row = new Object[5];
+                        row[0] = order1;
+                        row[1] = order1.getCustomerName();
+                        row[2] = order1.getDeliveryAddress();
+                        row[3] = order1.getPrice();
+                        row[4] = order2.getComment();
                         model.addRow(row);
                }
+                
+            }
             
         }
+               }
             }
         }
     }//GEN-LAST:event_btnViewFeedbackActionPerformed

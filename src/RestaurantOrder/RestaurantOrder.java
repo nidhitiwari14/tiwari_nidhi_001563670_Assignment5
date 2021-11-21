@@ -18,7 +18,7 @@ import java.util.UUID;
  */
 public class RestaurantOrder extends WorkRequest {
     private String orderID;
-    private String restaurentName;
+    private String restaurantName;
     private String customerName;
     private Customer customer;
     private String deliveryAddress;
@@ -38,12 +38,12 @@ public class RestaurantOrder extends WorkRequest {
         this.orderID = orderID;
     }
     
-    public String getRestaurentName() {
-        return restaurentName;
+    public String getRestaurantName() {
+        return restaurantName;
     }
 
-    public void setRestaurentName(String restaurentName) {
-        this.restaurentName = restaurentName;
+    public void setRestaurantName(String restaurantName) {
+        this.restaurantName = restaurantName;
     }
 
     public Customer getCustomer() {

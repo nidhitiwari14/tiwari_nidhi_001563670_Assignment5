@@ -155,7 +155,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnManageEnterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageEnterpriseActionPerformed
         ManageRestaurants manageResPanel=new ManageRestaurants(userProcessContainer, ecosystem);
-        userProcessContainer.add("Manage Restaurents",manageResPanel);
+        userProcessContainer.add("Manage Restaurants",manageResPanel);
         CardLayout layout=(CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnManageEnterpriseActionPerformed

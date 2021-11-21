@@ -68,7 +68,7 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
                    
                 Object[] row = new Object[4];
                 row[0] = menu;
-                row[1] = menu.getRestaurentName();
+                row[1] = menu.getRestaurantName();
                 row[2] = menu.getPrice();
                 row[3] = menu.getComment();
                 model.addRow(row);
@@ -273,7 +273,7 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
         else {
            Restaurant restaurant = (Restaurant)tblRestaurantDetails.getValueAt(selectedRow, 0);
             PlaceOrder manageMenu=new PlaceOrder(userProcessContainer,userAccount,business,restaurant);
-            userProcessContainer.add("Manage Restaurents",manageMenu);
+            userProcessContainer.add("Manage Restaurants",manageMenu);
             CardLayout layout=(CardLayout)userProcessContainer.getLayout();
             layout.next(userProcessContainer);
         }

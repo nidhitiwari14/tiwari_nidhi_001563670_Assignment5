@@ -54,7 +54,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
                 for(RestaurantOrder order : deliveryMan.getOrderList()){
                 Object[] row = new Object[4];
                 row[0] = order;
-                row[1] = order.getRestaurentName();
+                row[1] = order.getRestaurantName();
                 row[2] = order.getCustomerName();
                 row[3] = order.getStatus();
                 
@@ -117,7 +117,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
             workRequestJTable.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 58, 470, 96));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 58, 550, 96));
 
         assignJButton.setBackground(new java.awt.Color(0, 153, 255));
         assignJButton.setFont(new java.awt.Font("Lucida Grande", 3, 13)); // NOI18N
