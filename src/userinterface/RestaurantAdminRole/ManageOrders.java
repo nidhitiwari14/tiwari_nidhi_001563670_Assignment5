@@ -280,11 +280,11 @@ public class ManageOrders extends javax.swing.JPanel {
         // TODO add your handling code here:
         int selectedRow = ManageOrdersTbl.getSelectedRow();
         if(selectedRow<0){
-            JOptionPane.showMessageDialog(null,"Please select a row from the table to view details");
+            JOptionPane.showMessageDialog(null,"Please select a row from the table");
         }
         else{
             RestaurantOrder order  = (RestaurantOrder)ManageOrdersTbl.getValueAt(selectedRow, 0);
-            if(order.getStatus().equals("Assigned to Deliveryman") || order.getStatus().equals("Assign to Deliveryman")){
+            if(order.getStatus().equals("Assigned to Deliveryman") || order.getStatus().equals("Assign to Deliveryman") || order.getStatus().equals("Done")){
                 JOptionPane.showMessageDialog(null,"Already Assigned Order");
             }else{
                 DeliveryManAssign viewOrder=new DeliveryManAssign(userProcessContainer,account,order,business);
@@ -299,7 +299,7 @@ public class ManageOrders extends javax.swing.JPanel {
         // TODO add your handling code here:
         int selectedRow = ManageOrdersTbl.getSelectedRow();
         if(selectedRow<0){
-            JOptionPane.showMessageDialog(null,"Please select a row from the table to view details","Warning",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Please select a row from the table","Warning",JOptionPane.WARNING_MESSAGE);
         }
         else{
             RestaurantOrder order  = (RestaurantOrder)ManageOrdersTbl.getValueAt(selectedRow, 0);

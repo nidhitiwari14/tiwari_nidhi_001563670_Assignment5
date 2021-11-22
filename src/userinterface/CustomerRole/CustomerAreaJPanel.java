@@ -268,7 +268,7 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
         
         int selectedRow = tblRestaurantDetails.getSelectedRow();
         if(selectedRow<0){
-            JOptionPane.showMessageDialog(null,"Please select a row from the table to view details","Warning",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Please select a row from the table","Warning",JOptionPane.WARNING_MESSAGE);
         }
         else {
            Restaurant restaurant = (Restaurant)tblRestaurantDetails.getValueAt(selectedRow, 0);
@@ -294,7 +294,7 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
         String comment = txtComment.getText();
         
         if(selectedRow<0){
-            JOptionPane.showMessageDialog(null,"Please select a row from the table to view details","Warning",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Please select a row from the table","Warning",JOptionPane.WARNING_MESSAGE);
         }
        else{
 

@@ -146,7 +146,7 @@ public class PlaceOrder extends javax.swing.JPanel {
         });
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 3, 13)); // NOI18N
-        jLabel2.setText("Enter Address");
+        jLabel2.setText("Enter Address:");
 
         btnOrder.setBackground(new java.awt.Color(0, 153, 255));
         btnOrder.setFont(new java.awt.Font("Lucida Grande", 3, 13)); // NOI18N
@@ -170,9 +170,9 @@ public class PlaceOrder extends javax.swing.JPanel {
                     .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
                                 .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(70, 70, 70))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
@@ -226,7 +226,7 @@ public class PlaceOrder extends javax.swing.JPanel {
         // TODO add your handling code here:
           int selectedRow = tblMenu.getSelectedRow();
         if(selectedRow<0){
-            JOptionPane.showMessageDialog(null,"Please select a row from the table to view details","Warning",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Please select a row from the table","Warning",JOptionPane.WARNING_MESSAGE);
         }
         else{
             RestaurantMenu item=(RestaurantMenu)tblMenu.getValueAt(selectedRow, 0);
@@ -254,7 +254,7 @@ public class PlaceOrder extends javax.swing.JPanel {
         // TODO add your handling code here:
         int selectedRow = tblCart.getSelectedRow();
         if(selectedRow<0){
-            JOptionPane.showMessageDialog(null,"Please select a row from the table to view details","Warning",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Please select a row from the table","Warning",JOptionPane.WARNING_MESSAGE);
         }
         else{
             RestaurantMenu item=(RestaurantMenu)tblCart.getValueAt(selectedRow, 0);
@@ -303,7 +303,7 @@ public class PlaceOrder extends javax.swing.JPanel {
             return;
 
         }catch (Exception e){
-            JOptionPane.showMessageDialog(null, " Address is invalid");
+            JOptionPane.showMessageDialog(null, "Address is invalid");
 
             return;
         }

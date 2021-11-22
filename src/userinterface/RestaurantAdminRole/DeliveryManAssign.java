@@ -153,7 +153,7 @@ public class DeliveryManAssign extends javax.swing.JPanel {
         // TODO add your handling code here:
         int selectedRow = tblDeliveryManAssign.getSelectedRow();
         if(selectedRow<0){
-            JOptionPane.showMessageDialog(null,"Please select a row from the table to view details");
+            JOptionPane.showMessageDialog(null,"Please select a row from the table");
         }
         else
         {
